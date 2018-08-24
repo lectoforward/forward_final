@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+/*=========================================================
+  1. 폰트
+=========================================================*/ 
+/*오픈산스*/
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i');
+
+/*나눔고딕*/
+@import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+ 
+/*=========================================================
+  2. 리셋
+=========================================================*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video,button {margin: 0;padding: 0;border: 0;font-size: 16px;vertical-align: baseline;font-family:'Nanum Gothic','Open Sans', sans-serif;line-height: normal;box-sizing: border-box;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;-o-box-sizing: border-box;-ms-box-sizing: border-box;color:#666666;}
+input[type="text"],input[type="email"],input[type="number"],button,input[type="submit"],input[type="reset"],button,input[type="tel"],button,input[type="password"],input[type="url"],input[type="search"],input[type="file"],button,textarea{-webkit-appearance:none ;appearance:none;-moz-appearance:none;-ms-appearance:none;-o-appearance:none;border-radius:0;-webkit-border-radius:0;-moz-border-radius:0;margin:0; padding:0;font-family: 'Nanum Gothic','Open Sans', sans-serif;border:none;box-sizing:border-box;	-webkit-box-sizing:border-box;	-moz-box-sizing:border-box;	-o-box-sizing:border-box;background: none;}
+body { line-height: 1;text-size-adjust:none;-webkit-text-size-adjust:none;-moz-text-size-adjust:none;position: relative;background: #222;word-break: keep-all; white-space: -moz-pre-wrap; white-space: -pre-wrap;
+    white-space: -o-pre-wrap; word-wrap: break-word;}
+ol, ul { list-style: none; }
+blockquote, q { quotes: none;}
+input:focus,button:focus{outline: none; border:none;}
+table {border-collapse:collapse;border-spacing: 0;}
+ul, ol, li {margin:0; padding:0;}
+li {list-style: none;}
+a:focus{outline: none !important;}
+a{text-decoration: none;}
+:invalid { box-shadow: none;}
+:-moz-submit-invalid {box-shadow: none;}
+:-moz-ui-invalid { box-shadow:none;}
+button::-moz-focus-inner { border:0;padding:0;margin-top:-2px;margin-bottom: -2px;}
+input::-moz-focus-inner { border:0;padding:0;margin-top:-2px;margin-bottom: -2px;}
+img{max-width: 100%;}
+button:hover{cursor: pointer;}
+button{background: transparent;}
+.just_contact_form{padding:}
+textarea:focus{outline: none;}
+:focus{outline:none;}
+#buffer-extension-hover-button{display: none !important;}
+.entry-footer{clear: both;display: none;}
+.skip-link{display:none;}
+html{-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;overflow-y:scroll;}
+.post-edit-link{display: none !important;}
+.screen-reader-text{display: none;}
+.dropdown-toggle{display: none;}
+.mt0{margin-top:0 !important;}
+.site-header svg{display: none !important;}
+
+@media screen and (max-width: 600px){
+#wpadminbar{position: fixed !important;z-index: 100000;top:0; left:0;}
+}

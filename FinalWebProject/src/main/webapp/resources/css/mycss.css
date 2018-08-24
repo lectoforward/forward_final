@@ -1,0 +1,48 @@
+@CHARSET "UTF-8";
+
+li {
+    list-style: none;
+}
+
+.tabbx >  li{	
+	 font-size: 16px;
+    color: #666666;
+    display: block;
+    line-height: 1.2em;
+    text-align: center;
+    border-top: solid 4px transparent;
+    border-bottom: solid 4px transparent;
+    padding: 16px 5px;
+}
+
+#form_find_id{
+	float:left;
+	padding: 0 0 0 26%;  
+}
+#form_find_pwd{
+	float: right;
+	padding: 0 5% 0 0;
+}
+
+.form_itembx .text_inputbx{
+	width: 500px;
+}
+
+input[type="submit"].basic_btn{
+	margin: 0 0 0 70%;
+}
+
+.form_listbx .form_container{
+	width:100%;
+}
+
+.form_listbx .form_sub_btnbx .basic_btn.black{
+	width: 550px;
+}
+
+.form_seach_list{
+	max-width:70%;	
+}
+.tabbx li a{
+	    padding: 20px 0 0 37%; 
+}

@@ -1,0 +1,5 @@
+.scroll_down .arrow_bx .item_one{opacity: 1 !important;}
+.scroll_down .arrow_bx .item_two{opacity: 1 !important;}
+.more_head .title_more:hover .icon_item .arrow_basic{opacity: 1 !important;visibility: visible !important;}
+.top_btn:hover .icon_item .arrow_basic{opacity: 1 !important; visibility: visible !important;}
+.scroll_down .arrow_bx .item_one{top:2px !important;}
