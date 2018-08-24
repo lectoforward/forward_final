@@ -113,10 +113,16 @@
 				$form.attr('method','get');
 				$form.attr('action', '/a_editboard');
 				$form.appendTo('body');
-				 var input='<input type="hidden" value=" '+job+' " name="clickboardCode">'; 
+				 var input='<input type="hidden" value="'+job+'" name="clickboardCode">'; 
 				
 				$form.append(input);	
 				$form.submit();
+			}else if(check==0){
+				alert("수정할 게시판을 선택해 주세요.")
+			}
+			
+			else{
+				alert("게시판 수정은 한개만 선택 해주세요.");
 			}
 		});
 		
@@ -134,9 +140,14 @@
 			var tm2 = $('#keyword').val();
 			alert(tmp);
 			alert(tm2);
-			
 			var $form = $('#deleteform');
-			$form.attr('method','post');
+			alert('gg');
+			if(tm2==null){
+				
+				$form.attr('method','get');
+			}else{
+				$form.attr('method','post');
+			}
 			$form.attr('action', '/searchBoardWay');
 			$form.submit(); 
 			
