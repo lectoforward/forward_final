@@ -74,6 +74,7 @@ private static final Logger logger = LoggerFactory.getLogger(MemberController.cl
 		return "/login";
 	}
 	
+	// 비번 변경
 	@RequestMapping(value="/find_pwd_popup/cancel", method=RequestMethod.GET)
 	public String findPwdCancelGET() {
 		return "redirect:/find_id_pwd";

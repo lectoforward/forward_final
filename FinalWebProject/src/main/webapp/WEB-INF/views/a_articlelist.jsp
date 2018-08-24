@@ -179,8 +179,7 @@
 					<button class="btn btn-danger pull-right">삭제</button>
 					<a href="./addarticle.jsp" class="btn btn-success pull-right">글쓰기</a>
 					<a href="./theme.jsp" class="btn btn-warning pull-left">테마 변경</a> <a
-						href="./editboard.jsp" class="btn btn-primary pull-left">게시판
-						수정</a>
+						href="./editboard.jsp" class="btn btn-primary pull-left">게시판수정</a>
 				</div>
 			</div>
 		</div>
