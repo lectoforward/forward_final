@@ -29,7 +29,7 @@ import com.lecto.forward.vo.MemberArticleVO;
 @Controller
 public class MemberController{
 private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
-	
+	//
 	@Autowired
 	private MemberService memberService;
 	
