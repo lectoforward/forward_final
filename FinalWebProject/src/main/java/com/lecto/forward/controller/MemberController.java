@@ -33,6 +33,7 @@ private static final Logger logger = LoggerFactory.getLogger(MemberController.cl
 	@Autowired
 	private MemberService memberService;
 	
+	//  회원 가입
 	@RequestMapping(value="/m_signup", method=RequestMethod.POST)
 	public String registerMemberPost(Model model, HttpServletRequest req) {
 		
