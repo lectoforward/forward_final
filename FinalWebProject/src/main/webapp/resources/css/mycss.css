@@ -46,3 +46,25 @@ input[type="submit"].basic_btn{
 .tabbx li a{
 	    padding: 20px 0 0 37%; 
 }
+
+.listButtonBx{
+		margin-top: 30px;
+	    clear: both;
+	    text-align: right;
+	}
+	.btns{
+		background: #df581b;
+	    padding: 15px 40px;    
+	    font-size: 0;
+	    line-height: 0;
+	    float: right;
+	    text-align: center;
+	    height: 51px;
+	    margin-right: 5px;
+	    font-size: 18px; color:#ffffff;
+	    vertical-align: middle;
+	    margin-right:15px;
+	    color:#ffffff;
+	    line-height: 20px;
+	    font-weight: bold;
+	}

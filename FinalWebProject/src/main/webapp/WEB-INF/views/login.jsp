@@ -10,7 +10,6 @@
 	<meta name="format-detection" content="telephone=no">
 	<link rel="shortcut icon" href="favicon.ico">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
-		<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>
 <title>Smash Sports Matching</title>
 <link rel='dns-prefetch' href='//code.jquery.com' />
 <link rel='dns-prefetch' href='//fonts.googleapis.com' />
@@ -40,23 +39,23 @@ img.emoji {
 	padding: 0 0 0 87%;
 }
 </style>
-<link rel='stylesheet' id='dashicons-css'  href='./css/dashicons.min.css' type='text/css' media='all' />
-<link rel='stylesheet' id='post-views-counter-frontend-css'  href='./css/frontend.css?ver=4.7.3' type='text/css' media='all' />
+<link rel='stylesheet' id='dashicons-css'  href='./resources/css/dashicons.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='post-views-counter-frontend-css'  href='./resources/css/frontend.css?ver=4.7.3' type='text/css' media='all' />
 <link rel='stylesheet' id='twentysixteen-fonts-css'  href='https://fonts.googleapis.com/css?family=Montserrat%3A400%2C700%7CInconsolata%3A400&#038;subset=latin%2Clatin-ext' type='text/css' media='all' />
-<link rel='stylesheet' id='genericons-css'  href='./css/genericons.css?ver=3.4.1' type='text/css' media='all' />
-<link rel='stylesheet' id='twentysixteen-style-css'  href='./css/styleSmash.css?ver=4.7.3' type='text/css' media='all' />
-<link rel='stylesheet' id='jquery-ui-css'  href='./jquery-ui.min.css' type='text/css' media='all' />
-<link rel='stylesheet' id='unslider-css'  href='./unslider.css' type='text/css' media='all' />
+<link rel='stylesheet' id='genericons-css'  href='./resources/css/genericons.css?ver=3.4.1' type='text/css' media='all' />
+<link rel='stylesheet' id='twentysixteen-style-css'  href='./resources/css/styleSmash.css?ver=4.7.3' type='text/css' media='all' />
+<link rel='stylesheet' id='jquery-ui-css'  href='./resources/css/jquery-ui.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='unslider-css'  href='./resources/css/unslider.css' type='text/css' media='all' />
 
-<script type='text/javascript' src='./js/jquerySmash.js'></script>
-<script type='text/javascript' src='./js/jquery-migrate.min.js'></script>
+<script type='text/javascript' src='./resources/js/jquerySmash.js'></script>
+<script type='text/javascript' src='./resources/js/jquery-migrate.min.js'></script>
 <script type='text/javascript' src='//code.jquery.com/ui/1.11.4/jquery-ui.min.js'></script>
-<script type='text/javascript' src='./js/unslider.js'></script>
+<script type='text/javascript' src='./resources/js/unslider.js'></script>
 <link rel="alternate" type="text/xml+oembed" href="./json/embed.json" />
 <style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
 	
-	<link rel="stylesheet" href="./css/metabrain-editor.css" type="text/css" media="all">
-	<script type="text/javascript" src="./js/common.js"></script>
+	<link rel="stylesheet" href="./resources/css/metabrain-editor.css" type="text/css" media="all">
+	<script type="text/javascript" src="./resources/js/common.js"></script>
 </head>
 
 <body class="page-template page-template-templates page-template-login page-template-templateslogin-php page page-id-300 group-blog">
@@ -76,7 +75,10 @@ img.emoji {
 						<div class="form_listbx login">
 						
 							<form name="form_login"  action="login" method="POST">
-							<input type="hidden" name="job" value="login"/>		
+							<!-- 나중에 index에서 데이터 끌고와서 회원가입 페이지까지 가져가는걸로 바꾸기 -->
+							<%-- <input type="hidden" id="idRegEx" value="${idRegEx}">
+							<input type="hidden" id="nickRegEx" value="${nickRegEx}">
+							<input type="hidden" id="pwdRegEx" value="${pwdRegEx}"> 	 --%>
 								<div class="container" style="height:130px;"><br/></div>
 								<div class="form_container">
 									<h3><span class="icon_text" style="color:gray">LOGIN</span></h3>
@@ -106,7 +108,7 @@ img.emoji {
 									<div class="form_linkbx">
 										<ul>
 											<li><span class="text">*아이디와 비밀번호를 잊으셨나요?</span><a href="/find_id_pwd" class="btn gray">id/pw 찾기</a></li>
-											<li><span class="text">*회원이 아니신가요?</span><a href="m_signup.jsp" class="btn orange">회원가입</a></li>
+											<li><span class="text">*회원이 아니신가요?</span><a href="/m_signupPage" class="btn orange">회원가입</a></li>
 										</ul>
 									</div>
 								</div>
@@ -167,15 +169,7 @@ jQuery(document).ready(function($){
 	</div><!-- .site-inner -->
 </div><!-- .site -->
 
-<script type='text/javascript'>
-/* <![CDATA[ */
-var screenReaderText = {"expand":"\ud558\uc704 \uba54\ub274 \ud655\uc7a5","collapse":"\ud558\uc704 \uba54\ub274 \ucd95\uc18c"};
-/* ]]> */
-</script>
-<script type='text/javascript' src='./js/functions.js'></script>
-<script type='text/javascript' src='./js/kmcis.js'></script>
-<script type='text/javascript' src='./js/validation.js'></script>
-<script type='text/javascript' src='./js/wp-embed.min.js'></script>
+
 <!-- </div> -->
 
 </body>

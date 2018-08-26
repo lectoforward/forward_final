@@ -7,59 +7,20 @@
 	prefix="og: http://ogp.me/ns#"  class="no-js">
 	<%-- <%@ include file="/userheader.jsp" %>  --%>
 <head>
-
-<!-- /all in one seo pack -->
-<link rel='dns-prefetch' href='//gangwon-fc.com' />
-<link rel='dns-prefetch' href='//code.jquery.com' />
-<link rel='dns-prefetch' href='//fonts.googleapis.com' />
-<link rel='dns-prefetch' href='//s.w.org' />
-<link rel="alternate" type="application/rss+xml" title="강원FC &raquo; 피드" href="http://gangwon-fc.com/feed/" />
-<link rel="alternate" type="application/rss+xml" title="강원FC &raquo; 댓글 피드" href="http://gangwon-fc.com/comments/feed/" />
-<link rel="alternate" type="application/rss+xml" title="강원FC &raquo; asdasd 댓글 피드" href="http://gangwon-fc.com/asdasd/feed/" />
-		<script type="text/javascript">
-			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/gangwon-fc.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.7.3"}};
-			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),!(j.toDataURL().length<3e3)&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,65039,8205,55356,57096),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,55356,57096),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55357,56425,55356,57341,8205,55357,56507),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55357,56425,55356,57341,55357,56507),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
-		</script>
-		<style type="text/css">
-img.wp-smiley,
-img.emoji {
-	display: inline !important;
-	border: none !important;
-	box-shadow: none !important;
-	height: 1em !important;
-	width: 1em !important;
-	margin: 0 .07em !important;
-	vertical-align: -0.1em !important;
-	background: none !important;
-	padding: 0 !important;
-}
-</style>
+<link rel='stylesheet' id='mycss'  href='./resources/css/mycss.css' type='text/css' media='all' />
 <link rel='stylesheet' id='post-views-counter-frontend-css'  href='http://gangwon-fc.com/wp-content/plugins/post-views-counter/css/frontend.css?ver=4.7.3' type='text/css' media='all' />
 <link rel='stylesheet' id='twentysixteen-fonts-css'  href='https://fonts.googleapis.com/css?family=Montserrat%3A400%2C700%7CInconsolata%3A400&#038;subset=latin%2Clatin-ext' type='text/css' media='all' />
 <link rel='stylesheet' id='genericons-css'  href='http://gangwon-fc.com/wp-content/themes/gangwonfc/genericons/genericons.css?ver=3.4.1' type='text/css' media='all' />
 <link rel='stylesheet' id='twentysixteen-style-css'  href='http://gangwon-fc.com/wp-content/themes/gangwonfc/style.css?ver=4.7.3' type='text/css' media='all' />
-<!--[if lt IE 10]>
-<link rel='stylesheet' id='twentysixteen-ie-css'  href='http://gangwon-fc.com/wp-content/themes/gangwonfc/css/ie.css?ver=20160816' type='text/css' media='all' />
-<![endif]-->
-<!--[if lt IE 9]>
-<link rel='stylesheet' id='twentysixteen-ie8-css'  href='http://gangwon-fc.com/wp-content/themes/gangwonfc/css/ie8.css?ver=20160816' type='text/css' media='all' />
-<![endif]-->
-<!--[if lt IE 8]>
-<link rel='stylesheet' id='twentysixteen-ie7-css'  href='http://gangwon-fc.com/wp-content/themes/gangwonfc/css/ie7.css?ver=20160816' type='text/css' media='all' />
-<![endif]-->
-<link rel='stylesheet' id='jquery-ui-css'  href='//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.min.css' type='text/css' media='all' />
-<link rel='stylesheet' id='unslider-css'  href='http://gangwon-fc.com/wp-content/themes/gangwonfc/unslider/unslider.css' type='text/css' media='all' />
-<!--[if lt IE 9]>
-<script type='text/javascript' src='http://gangwon-fc.com/wp-content/themes/gangwonfc/js/html5.js?ver=3.7.3'></script>
-<![endif]-->
-<script type='text/javascript' src='http://gangwon-fc.com/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<!-- <script type='text/javascript' src='http://gangwon-fc.com/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script> -->
 <script type='text/javascript' src='http://gangwon-fc.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
 <script type='text/javascript' src='//code.jquery.com/ui/1.11.4/jquery-ui.min.js'></script>
 <script type='text/javascript' src='http://gangwon-fc.com/wp-content/themes/gangwonfc/unslider/unslider.js'></script>
-		<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
-	<link rel="stylesheet" href="http://gangwon-fc.com/wp-content/themes/gangwonfc/css/template.css?20170607" type="text/css" media="all">
-	<link rel="stylesheet" href="http://gangwon-fc.com/wp-content/themes/gangwonfc/metabrain-editor/css/metabrain-editor.css" type="text/css" media="all">
-	<script type="text/javascript" src="http://gangwon-fc.com/wp-content/themes/gangwonfc/js/common.js?20170607"></script>
+<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+<link rel="stylesheet" href="http://gangwon-fc.com/wp-content/themes/gangwonfc/css/template.css?20170607" type="text/css" media="all">
+<link rel="stylesheet" href="http://gangwon-fc.com/wp-content/themes/gangwonfc/metabrain-editor/css/metabrain-editor.css" type="text/css" media="all">
+<script type="text/javascript" src="http://gangwon-fc.com/wp-content/themes/gangwonfc/js/common.js?20170607"></script>
 </head>
 
 <body class="post-template-default single single-post postid-34855 single-format-standard logged-in group-blog category_one">
@@ -78,10 +39,10 @@ img.emoji {
 						<!-- 빵가루 -->
 			<div class="breadcrumb">
 				<ul>
-					<li class="home"><a class="item" href="http://gangwon-fc.com">home</a></li>
-										<li><a class="item" href="http://gangwon-fc.com/great-u/">forward</a></li>						
-										<li><a class="item" href="http://gangwon-fc.com/great-u/free-board/">자유게시판</a></li>						
-									</ul>
+					<li class="home"><a class="item" href="/index">home</a></li>
+					<li><a class="item" href="#">forward</a></li>						
+					<li><a class="item" href="#">자유게시판</a></li>						
+				</ul>
 			</div>
 			<!-- .빵가루 -->
 					</div>
@@ -116,7 +77,7 @@ img.emoji {
 					<div class="single_contbx">
 						<div class="single_container">
 							<div class="single_cont">
-																<div class="editbx_text">asd</div>
+								<div class="editbx_text">asd</div>
 							</div>
 						</div>
 					</div>
@@ -126,15 +87,17 @@ img.emoji {
 						<div class="commentbx">
 							<div class="comment_textbx"><span class="color">${articleVO.articleHits}</span>개의 댓글이 달렸습니다.</div>
 														<div class="comment_textareabx">
-								<form action="http://gangwon-fc.com/wp-admin/admin-ajax.php" method="POST" id="form_comment_write">
-									<input type="hidden" name="write_nonce" value="8e4d70f7da"/>
-									<input type="hidden" name="pid" value="34855">
+								<form method="POST" id="form_comment_write">
 									<input type="hidden" name="boardCode" value="${articleVO.boardCode}">
 									<input type="hidden" name="action" value="write_comment">
 									<label class="comment_textarea_label" for="comment_textarea_label">댓글쓰기</label>
 									<textarea id="comment_textarea_label" class="textareabx" name="content" placeholder=""></textarea>
 									<input type="submit" class="submitbx" value="댓글쓰기">
 								</form>
+								<form id="article">
+									<input type="hidden" name="articleCode" id="articleCode" value="${articleVO.articleCode}">
+								</form>
+								
 							</div>
 							<!-- 댓글리스트 -->
 							<div class="comment_listbx">
@@ -166,10 +129,10 @@ img.emoji {
 					</div>
 					<!-- .싱글페이징 -->
 					<!-- 목록버튼 -->
-					<div class="list_btnbx">
-						<a href="http://gangwon-fc.com/great-u/free-board/?paged=1" class="list_btn"><span class="text">목록보기</span><i class="icon_item"></i></a>
-												<a href="#;" class="basic_btn mr5 del_btn" data-post-id="34855"><span class="text">삭제</span></a>
-						<a href="#" class="basic_btn mr5"><span class="text">수정</span></a>
+					<div class="listButtonBx">
+						<a class="listButton btns">목록보기<i class="icon_item"></i></a>
+						<a class="delButton btns" >삭제</a>
+						<a class="btns updateButton" name="updateButton">수정</a>
 					</div>
 					<!-- .목록버튼 -->
 				</div>
@@ -184,8 +147,10 @@ img.emoji {
 
 <script type="text/javascript">
 jQuery(document).ready(function($){
+	var arc = $("#articleCode").val();
+	
 	if(!admin_ajax || admin_ajax == "undefined"){
-		var admin_ajax =  "http://gangwon-fc.com/wp-admin/admin-ajax.php";
+		var admin_ajax =  "주소";
 	}
 
 	// 댓글 수정
@@ -218,31 +183,28 @@ jQuery(document).ready(function($){
 	});
 
 	// 글 삭제
-	$('.list_btnbx .del_btn').click(function(){
-		var pid = $(this).data('post-id');
+	$(".delButton").click(function(){
+		var arCode = $("#articleCode").val();
 		if(confirm('정말 삭제하시겠습니까?')){
-			$.ajax({
-				url: admin_ajax,
-				type: 'POST',
-				data: 'action=/m_detailarticle&articleCode='+articleCode,
-				success: function(data){
-					if(data.success){
-						if(data.location){
-							location.replace(data.location);
-						}
-
-						alert('삭제되었습니다.');
-					}
-					else if(data.msg){
-						alert(data.msg);
-					}
-				}
-			});
+			var $form = $("#article");
+			$form.attr('action', '/m_deleteArticle');
+			$form.attr('method', 'GET');
+			$form.submit();
 		}
 	});
 
+	// 글 수정
+	$(".updateButton").click(function(){
+		var arCode = $("#articleCode").val();
+		var $form = $("#articleDel");
+		/* alert($form.articleCode);
+		$form.attr('action', '/m_deleteArticle');
+		$form.attr('method', 'GET'); */
+		$form.submit();
+	});
+	
 	// 댓글수정
-	$('form[name="form_comment_modify"]').submit(function(e){
+	$('form[name="updateButton"]').submit(function(e){
 		e.stopPropagation();
 		e.preventDefault();
 		var $form = $(this);
@@ -268,8 +230,6 @@ jQuery(document).ready(function($){
 				}
 			}
 		});
-
-		
 	});
 
 	// 댓글쓰기
@@ -313,12 +273,7 @@ jQuery(document).ready(function($){
 </div><!-- .site -->
 <script type='text/javascript' src='http://gangwon-fc.com/wp-content/themes/gangwonfc/js/skip-link-focus-fix.js?ver=20160816'></script>
 <script type='text/javascript' src='http://gangwon-fc.com/wp-includes/js/comment-reply.min.js?ver=4.7.3'></script>
-<script type='text/javascript'>
-/* <![CDATA[ */
-var screenReaderText = {"expand":"\ud558\uc704 \uba54\ub274 \ud655\uc7a5","collapse":"\ud558\uc704 \uba54\ub274 \ucd95\uc18c"};
-/* ]]> */
-</script>
-<script type='text/javascript' src='http://gangwon-fc.com/wp-content/themes/gangwonfc/js/functions.js?ver=20160816'></script>
+<!-- <script type='text/javascript' src='http://gangwon-fc.com/wp-content/themes/gangwonfc/js/functions.js?ver=20160816'></script> -->
 <script type='text/javascript' src='http://gangwon-fc.com/wp-content/themes/gangwonfc/functions/kmcis/kmcis.js'></script>
 <script type='text/javascript' src='http://gangwon-fc.com/wp-content/themes/gangwonfc/functions/validation/validation.js'></script>
 <script type='text/javascript' src='http://gangwon-fc.com/wp-includes/js/wp-embed.min.js?ver=4.7.3'></script>

@@ -60,7 +60,11 @@ img.emoji {
 </head>
 
 <body class="home page-template-default page page-id-6 group-blog">
-<input type="hidden" name="job" value="index">
+<!-- 나중에 이 데이터 회원 가입 페이지까지 끌고가는걸로 바꾸자
+(회원가입할 때 마다 서버에서 정규식 가져올 수 없으니까 index로딩할 때 한번만 로딩하고 끌고 다녀)-->
+<%-- <input type="hidden" id="idRegEx" value="${idRegEx}">
+<input type="hidden" id="nickRegEx" value="${nickRegEx}">
+<input type="hidden" id="pwdRegEx" value="${pwdRegEx}">  --%>
 <div id="page" class="site">
 	<div class="mobile_nav_onbg"></div>
 	<div class="site-inner">
@@ -426,10 +430,8 @@ img.emoji {
 	</div><!-- .site-inner -->
 </div><!-- .site -->
 
-<script type='text/javascript'>
-/* <![CDATA[ */
-var screenReaderText = {"expand":"\ud558\uc704 \uba54\ub274 \ud655\uc7a5","collapse":"\ud558\uc704 \uba54\ub274 \ucd95\uc18c"};
-/* ]]> */
+<script>
+	
 </script>
 <!-- <script type='text/javascript' src='./js/functions.js'></script>
 <script type='text/javascript' src='./js/kmcis.js'></script> -->

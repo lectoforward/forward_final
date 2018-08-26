@@ -26,12 +26,6 @@ public class BoardController{
 	@Autowired
 	BoardService boardService;
 	
-	@RequestMapping(value="/index", method=RequestMethod.GET)
-	public String startPage() {
-		
-		return "/index";
-	}
-	
 	@RequestMapping(value="/ad_addboard", method=RequestMethod.GET)
 	public String addBoard(@Param("boardCode")String boardName) throws Exception{
 		System.out.println(boardName+"гого");	

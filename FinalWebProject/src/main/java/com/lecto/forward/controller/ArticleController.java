@@ -73,7 +73,6 @@ public class ArticleController{
 		return "/m_detailarticle";	
 	}
 	
-	
 	/*게시글 수정버튼 클릭시 페이지 이동*/
 //	@RequestMapping(value="/m_editarticle", method=RequestMethod.GET)
 //	public String updateArticleMemGet() {
@@ -87,12 +86,16 @@ public class ArticleController{
 //	}
 	
 	/*게시글 삭제*/
-	@RequestMapping(value="/m_detailarticle", method=RequestMethod.POST)
+	@RequestMapping(value="/m_deleteArticle", method=RequestMethod.GET)
 	public String deleteArticleMem(String articleCode, String boardCode, Model model) {
+		System.out.println("m_deleteArticle 호출!!!!!!!!!!!!!!!!!!!!");
 		List<ArticleVO> articles = null;
+		model.addAttribute("boardCode", boardCode);
 		if(articleCode == null) {
+			System.out.println(articleCode);
 			articleService.deleteArticle(articleCode);
 			articles = articleService.searchArticle(boardCode);
+			
 			return "redirect:/m_board";
 		}
 		boolean flag = articleService.deleteArticle(articleCode);
@@ -101,9 +104,9 @@ public class ArticleController{
 		}
 		
 		articles = articleService.searchArticle(boardCode);
-		model.addAttribute("boardCode", boardCode);
+
 		model.addAttribute("articles", articles);
-		return "redirect:/m_board/boardCode?"+boardCode;
+		return "redirect:/m_board";
 	}
 	
 	

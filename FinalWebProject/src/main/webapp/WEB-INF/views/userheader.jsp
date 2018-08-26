@@ -81,7 +81,7 @@ img.emoji {
 			<div class="hover_bg"></div>
 			<!-- 데이터 -->
 			<form role="form" action="m_board" method="GET" id="boardSelect">
-				<input type="hidden" name="boardCode" value="bo2">
+				<input type="hidden" name="boardCode" value="">
 			</form>
 			<!-- 데이터 -->
 			<!-- 서치박스 -->
@@ -136,10 +136,10 @@ img.emoji {
 							<div class="menu-main_nav-container">
 							<ul id="menu-main_nav-1" class="primary-menu">
 							<li class="nav_greatu menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-91">
-							<a href="index.jsp">Home</a>
+							<a href="index">Home</a>
 							<ul class="sub-menu">
-								<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-92 board" id="bo2"><a href="#">공지사항</a></li>
-								<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-95 board"><a href="#">자유게시판</a>
+								<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-92 board" id="bo1"><a href="#">공지사항</a></li>
+								<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-95 board" id="bo2"><a href="#">자유게시판</a>
 									<ul class="sub-menu">
 										<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7014"><a href="#">Q&#038;A</a></li>
 								</ul>

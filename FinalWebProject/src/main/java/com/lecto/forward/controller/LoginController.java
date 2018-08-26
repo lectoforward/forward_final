@@ -1,6 +1,7 @@
 package com.lecto.forward.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.lecto.forward.dto.MemberDTO;
 import com.lecto.forward.service.MemberService;
+import com.lecto.forward.service.SignupFormService;
 import com.lecto.forward.vo.ManagerVO;
 
 @Controller
@@ -21,12 +23,31 @@ public class LoginController {
 	@Inject
 	private MemberService memberService;
 
+	@Inject
+	SignupFormService signupFormService;
+
+	
+	/** 회원 가입 페이지로 이동 */
+	@RequestMapping(value="/m_signupPage", method = RequestMethod.GET)
+	public String signup(Model model) {
+		List<String> data = signupFormService.loadRegExData();
+		
+		model.addAttribute("idRegEx", data.get(0));
+		model.addAttribute("nickRegEx", data.get(1));
+		model.addAttribute("pwdRegEx", data.get(2));
+
+		return "/m_signup";
+	}
+	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login() {
 
 		return "/login";
 	}
 
+	
+	
+	
 	/** 로그인(관리자,운영자 / 회원) */
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(MemberDTO member, Model model, HttpSession session) {
@@ -39,7 +60,6 @@ public class LoginController {
 				if (memberDTO.getMemberPwd().equals(member.getMemberPwd())) {
 					session.setAttribute("login", member.getMemberId());
 					// 운영자 view에서 운영자
-					System.out.println("b");
 
 					// Object로 다찾아온다.
 					Object[] managers = memberService.searchManager();
@@ -50,7 +70,6 @@ public class LoginController {
 							managerIds.put(((ManagerVO) managers[i]).getMemberId(), (ManagerVO)managers[i]);
 						}
 					}
-					System.out.println("c");
 
 					// 관리자인 경우
 					if (member.getMemberId().equals("admin")) {
@@ -61,12 +80,10 @@ public class LoginController {
 					// 운영자인 경우
 					else if (managerIds.containsKey((member.getMemberId()))) {
 						session.setAttribute("boardName", managerIds.get(member.getMemberId()).getBoardName());
-						System.out.println("e");
 						return "/a_main";
 					}
 					// 사용자일 경우
 					else {
-						System.out.println("f");
 						return "/index";
 					}
 
@@ -102,4 +119,5 @@ public class LoginController {
 		return "/find_id_pwd";
 	}
 
+	
 }

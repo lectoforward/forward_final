@@ -25,7 +25,10 @@ img.wp-smiley, img.emoji {
 	background: none !important;
 	padding: 0 !important;
 }
-
+#checkMail{
+	position:relative !important;
+	margin: -53px 0 0 74%
+}
 .max_container {
 	width: 100%;
 	text-align: center;
@@ -42,6 +45,7 @@ img.wp-smiley, img.emoji {
 .radio_bx {
 	padding: 0 50% 0 0;
 }
+
 </style>
 <link rel='stylesheet' id='dashicons-css'
 	href='./resources/css/dashicons.min.css' type='text/css' media='all' />
@@ -94,7 +98,205 @@ img.wp-smiley, img.emoji {
 		var nicknameck = 0;
 		var phoneck = 0;
 		var mailck=0;
-
+		var idRegEx = $("#idRegEx").val();
+		var nickRegEx = $("#nickRegEx").val();
+		var pwdRegEx = $("#pwdRegEx").val();
+		var phoneRegEx = "^\d{3}-\d{3,4}-\d{4}$";
+		var birthRegEx = "^[1-2]{1}[0-9]{3}-[0-1]{1}[0-9]{1}-[0-3]{1}[0-9]{1}$";
+		var nameRegEx = "^[가-힣]*$";
+		var memberId = $("#memberId").val();		
+		
+		var flag=0;
+		/* id유효성  실시간 체크 */
+		$("#memberId").keyup(function(){
+			var id = $("#memberId").val();
+		
+			if(id != 0)
+			{
+				if(!(flag = isValid(id, idRegEx)))
+				{
+					$("#idChk").text("아이디 형식이 유효하지 않습니다.");
+					$("#idChk").css({"color":"red"});
+				} else {
+					$("#idChk").text("")
+				}
+			}
+		});
+		
+		$("#memberId").focusout(function(){
+			if(!flag){
+				$("#memberId").focus();
+				$("#memberId").val("");
+			}else{
+				flag=0;
+			}
+		});
+		
+		
+		/* pwd유효성  실시간 체크 */
+		$("#memberPwd").keyup(function(){
+			var pw = $("#memberPwd").val();
+		
+			if(pw != 0 || id != null || id != "")
+			{
+				if(!(flag = isValid(pw, pwdRegEx)))
+				{
+					$("#pwdChk").text("비밀번호 형식이 유효하지 않습니다.");
+					$("#pwdChk").css({"color":"red"});
+				} else {
+					$("#pwdChk").text("");
+				}
+			}
+		});
+		
+		$("#memberPwd").focusout(function(){
+			if(!flag){
+				$("#memberPwd").focus();
+				$("#memberPwd").val("");
+			}else{
+				flag=0;
+			}
+		});
+		
+		/* pwd2유효성  실시간 체크 */
+		$("#memberPwd2").keyup(function(){
+			var pw = $("#memberPwd").val();
+			var pw2 = $("#memberPwd2").val();
+			
+			if(pw2 != 0 || pw2 != null || pw2 != "")
+			{
+				if(flag = !(pw == pw2))
+				{
+					$("#pwdReChk").text("이전 입력 비밀번호와 같게 입력해 주세요.");
+					$("#pwdReChk").css({"color":"red"});
+				} else {
+					$("#pwdReChk").text("");
+				}
+			}
+		});
+		
+		$("#memberPwd2").focusout(function(){
+			if(flag){
+				$("#memberPwd2").focus();
+				$("#memberPwd2").val("");
+			}else{
+				flag=0;
+			}
+		});
+		
+		/* nickname유효성  실시간 체크 */
+		$("#memberNickname").keyup(function(){
+			var nick = $("#memberNickname").val();
+		
+			if(nick != 0 || nick != null || nick != "")
+			{
+				if(flag = !isValid(nick, nickRegEx))
+				{
+					$("#nickNameChk").text("닉네임 형식이 유효하지 않습니다.");
+					$("#nickNameChk").css({"color":"red"});
+				} else {
+					$("#nickNameChk").text("");
+				}
+			}
+		});
+		
+		$("#nickNameChk").focusout(function(){
+			if(!flag){
+				$("#memberPwd2").focus();
+				$("#memberPwd2").val("");
+			}else{
+				flag=0;
+			}
+		});
+		
+		/* name유효성  실시간 체크 */
+		$("#memberName").keyup(function(){
+			var name = $("#memberName").val();
+		
+			if(name != 0 || name != null || name != "")
+			{
+				if(flag = !isValid(name, nameRegEx))
+				{
+					$("#nameChk").text("이름 형식이 유효하지 않습니다.");
+					$("#nameChk").css({"color":"red"});
+				} else {
+					$("#nameChk").text("");
+				}
+			}
+		});
+		
+		$("#memberName").focusout(function(){
+			if(flag){
+				$("#memberName").focus();
+				$("#memberName").val("");
+			}else{
+				flag=0;
+			}
+		});
+		
+		/* 생일 유효성  실시간 체크 */
+		$("#memberBirth").keyup(function(){
+			var birth = $("#memberBirth").val();
+			if(birth != 0 || birth != null || birth != "")
+			{
+				if(flag = (!isValid(birth, birthRegEx)))
+				{
+					$("#birthChk").text("생일 형식이 유효하지 않습니다.");
+					$("#birthChk").css({"color":"red"});
+				} else {
+					$("#birthChk").text("");
+				}
+			}
+		});
+		
+		$("#memberBirth").focusout(function(){
+			if(flag){
+				$("#memberBirth").focus();
+				$("#memberBirth").val("");
+			}else{
+				flag=0;
+			}
+		});
+		
+		/* phone유효성  실시간 체크 */
+		/* $("#memberPhone").keyup(function(){
+			var ph = $("#memberPhone").val();
+		
+			if(ph != 0 || ph != null || ph != "")
+			{
+				if(flag = (!isValid(ph, phoneRegEx)))
+				{
+					$("#phoneChk").text("핸드폰 번호 형식이 유효하지 않습니다.");
+					$("#phoneChk").css({"color":"red"});
+				} else {
+					$("#phoneChk").text("");
+				}
+			}
+		}); */
+		
+		$("#memberPhone").focusout(function(){
+			if(flag){
+				$("#memberPhone").focus();
+				$("#memberPhone").val("");
+			}else{
+				flag=0;
+			}
+		});
+		
+		
+		
+		/* 정규표현식 유효성 확인 */
+		function isValid(val, reg) {
+			var pattern = new RegExp(reg);
+			//alert(pattern.test(val));
+			return pattern.test(val);
+		}	
+		
+		
+		
+		
+		
+		
 		jQuery("#checkId").bind("click", function(e) {
 
 			var memberId = $("#memberId").val();
@@ -211,7 +413,6 @@ img.wp-smiley, img.emoji {
 
 		 <!-- 이메일 중복 체크-->
 		$("#checkMail").bind("click",function(e){
-			
 			var memberMail1 = $("#memberMail1").val();
 			var memberMail2 = $("#memberMail2").val();
 			var memberMail = $("#memberMail1").val() + "@" + $("#memberMail2").val();
@@ -247,9 +448,7 @@ img.wp-smiley, img.emoji {
 				error:function(error){
 					alert("error:"+error);
 				}
-				
-			});
-			
+			});			
 		});
 		
 		jQuery("#naver").bind("click",function(e){
@@ -416,11 +615,11 @@ img.wp-smiley, img.emoji {
 					<ul id="menu-main_nav-1" class="primary-menu">
 						<li
 							class="nav_greatu menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-91">
-							<a href="index.jsp">Home</a>
+							<a href="/index">Home</a>
 							<ul class="sub-menu">
 								<li
 									class="menu-item menu-item-type-post_type menu-item-object-page menu-item-92"><a
-									href="noticeboard.jsp">공지사항</a></li>
+									href="#">공지사항</a></li>
 								<li
 									class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-95"><a
 									href="freeboard.jsp">자유게시판</a>
@@ -543,12 +742,10 @@ img.wp-smiley, img.emoji {
 										<!-- 컨텐츠 시작 -->
 										<div id="signup_content">
 											<form name="form_signup" method="post">
-
-												<input type="hidden" name="signup_nonce" value="1153c11567" />
-												<input type="hidden" name="step" value="three" />
-												<!-- <input type="hidden" name="name" value="이름 기본값"> -->
+												<input type="hidden" id="idRegEx" value="${idRegEx}">
+												<input type="hidden" id="nickRegEx" value="${nickRegEx}">
+												<input type="hidden" id="pwdRegEx" value="${pwdRegEx}">
 												<input type="hidden" name="memberId_verify" value="">
-												<input type="hidden" name="job" value="memberJoin" />
 												<div class="container" style="height: 130px;">
 													<br />
 												</div>
@@ -570,7 +767,8 @@ img.wp-smiley, img.emoji {
 																			data-validation="required min-length max-length memberId"
 																			data-min-length="3" data-max-length="18"> <a
 																			class="form_btn_basic search_user_login" id="checkId"
-																			name="checkId">중복확인</a> <span id="idChk"></span>
+																			name="checkId">중복확인</a>
+																			<span id="idChk"></span>
 																		<p class="form_allet error alert_error"
 																			style="display: none" data-input-name="user_login"></p>
 																	</div>
@@ -598,6 +796,7 @@ img.wp-smiley, img.emoji {
 																		영문과 숫자를 조합</p> -->
 																	<p class="form_allet error alert_error"
 																		style="display: none" data-input-name="memberPwd"></p>
+																		<span id="pwdChk"></span>
 																</dd>
 															</dl>
 														</div>
@@ -615,6 +814,7 @@ img.wp-smiley, img.emoji {
 																			data-validation="match" data-match="memberPwd2"
 																			data-label="비밀번호" data-min-length="6"
 																			data-max-length="12">
+																			<span id="pwdReChk"></span>
 																	</div>
 																	<p class="form_allet error alert_error"
 																		style="display: none" data-input-name="memberPwd2"></p>
@@ -636,8 +836,8 @@ img.wp-smiley, img.emoji {
 																			data-validation="required min-length max-length memberNickname"
 																			data-min-length="3" data-max-length="18"> <a
 																			class="form_btn_basic search_user_login"
-																			id="checkNickname" name="checkNickname">중복확인</a> <span
-																			id="nickNameChk"></span>
+																			id="checkNickname" name="checkNickname">중복확인</a>
+																			<span id="nickNameChk"></span>
 																		<p class="form_allet error alert_error"
 																			style="display: none" data-input-name="user_login"></p>
 																	</div>
@@ -655,8 +855,9 @@ img.wp-smiley, img.emoji {
 																<dd>
 																	<div class="inputbx max_475 pr_130">
 																		<!-- <div class="inputbx"> -->
-																		<input type="text" class="text_inputbx" id="input_0"
+																		<input type="text" class="text_inputbx" id="memberName"
 																			name="memberName" data-validation="required">
+																		<span id="nameChk"></span>
 
 																		<p class="form_allet error alert_error"
 																			style="display: none" data-input-name="memberName"></p>
@@ -674,8 +875,9 @@ img.wp-smiley, img.emoji {
 																</dt>
 																<dd>
 																	<div class="inputbx max_475 pr_130">
-																		<input type="text" class="text_inputbx" id="input_1"
+																		<input type="text" class="text_inputbx" id="memberBirth"
 																			name="memberBirth" data-validation="required" placeholder="YYYY-MM-DD">
+																		<span id="birthChk"></span>
 																		<p class="form_allet error alert_error"
 																			style="display: none" data-input-name="birth"></p>
 																	</div>
@@ -696,10 +898,10 @@ img.wp-smiley, img.emoji {
 																			data-validation="required" placeholder="010-XXXX-XXXX"> <a
 																			class="form_btn_basic search_user_login"
 																			id="checkPhone" name="checkPhone">중복확인</a>
+																			<span id="phoneChk"></span>
 																		<p class="form_allet error alert_error"
 																			style="display: none" data-input-name="birth"></p>
 																	</div>
-
 																</dd>
 															</dl>
 														</div>
@@ -727,6 +929,7 @@ img.wp-smiley, img.emoji {
 																			<input type="text" id="signup_three1"
 																				class="text_inputbx" name="memberAddress"
 																				data-validation="required">
+																				<span id="addrChk"></span>
 																			<p class="form_allet error alert_error"
 																				style="display: none"
 																				data-input-name="memberAddress"></p>
@@ -765,6 +968,7 @@ img.wp-smiley, img.emoji {
 																			<input type="text" id="memberMail2"
 																				class="text_inputbx" placeholder="직접입력"
 																				name="memberMail2" data-validation="required">
+																				<span id="mailChk"></span>
 																			<p class="form_allet error alert_error"
 																				style="display: none" data-input-name="memberMail2"></p>
 																		</div>
@@ -782,18 +986,20 @@ img.wp-smiley, img.emoji {
 																						data-value="gmail.com" id="gmail" class="gmail" name="gmail">gmail.com</a></li>
 																					<li id="nomail" name="nomail"><a data-value="">직접입력</a></li>
 																				</ul>
+																				
+																				<span id="emailChk"></span>
 																			</div>
-
 																		</div>
-
-
+																		
 																	</div>
-																	<a class="form_btn_basic search_user_login"
-																		id="checkMail" name="checkMail">중복확인</a>
-																</dd>
+																	<div>
+																		<a class="form_btn_basic search_user_login emailCh"
+																			id="checkMail" name="checkMail">중복확인
+																		</a>
+																	</div>																																
+																</dd>		
 															</dl>
 														</div>
-
 														<div class="form_bottombx in_btnbx">
 															<input type="submit" name="registerMember"
 																id="registerMember"
@@ -828,17 +1034,6 @@ img.wp-smiley, img.emoji {
 	<!-- .site-inner -->
 	</div>
 	<!-- .site -->
-
-
-
 	</div>
-
-
-
-
 </body>
-
-
-
-
 </html>

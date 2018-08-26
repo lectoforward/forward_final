@@ -41,6 +41,9 @@ img.emoji {
 .max_container > ul{
 	padding: 0 0 0 40%;
 }
+#btn2{
+	padding: 0 0 0 20% !important;
+}
 </style>
 
 <script>
@@ -130,7 +133,7 @@ img.emoji {
 									</form>
 								</div>
 								<div class="basic_btnbx">
-									<a href="#" class="basic_btn search" id="btn2"><span class="text">검색</span></a>
+									<a href="#" class="basic_btn search searchBtn" id="btn2"><span class="text">검색</span></a>
 								</div>
 								<!-- .서치박스 -->
 								<form name="write" action="/m_addarticle" method="GET" id="write">
@@ -239,7 +242,6 @@ img.emoji {
 		     $form.attr('method', 'get');
 		     $form.appendTo('body');
 		     var articleCd = '<input type="hidden" name="articleCode" value="' + id + '" articleCode="$(articleCode}">';
-		     alert(articleCd);
 		     $form.append(articleCd);
 		     $form.submit();
 		});
@@ -307,8 +309,8 @@ img.emoji {
 		// var $searchForm = $('form[name="board_search"]');
 		//console.log("1. $(this).text() : "+$(this).text()+", $(this).attr() : "+$(this).attr("value"));
 		//if($searchForm.length){
-//			$searchForm.find('input[name="c"]').val($(this).data('value'));
-	//	}
+			//$searchForm.find('input[name="c"]').val($(this).data('value'));
+		//}
 		//console.log($(this));
 		//$(this).closest('ul').slideUp(200);
 		//$(".content").var($(this).closest('.basic_select_bx').find('.textbx').text($(this).text()));
