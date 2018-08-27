@@ -213,7 +213,7 @@
 	};
 
 	function close_pop3(flag) {
-		alert("bb");
+		
 		$('#myModal2').hide();
 		var changePwd = $("#changePwd").val();
 		var $form = $('<form></form>');

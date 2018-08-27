@@ -1,0 +1,43 @@
+/* =========================================================
+  자유게시판 리스트
+=========================================================*/
+.tbl_basiclist.free_board table tbody td.step2 a {
+	margin-right: 5px;
+}
+
+.tbl_basiclist table tbody td.step2 .comment {
+	font-size: 18px;
+	color: #da5422;
+	line-height: 1.4em;
+	padding-bottom: 1px;
+}
+
+/* =========================================================
+  자유게시판 리스트 반응형
+=========================================================*/
+@media screen and (max-width: 1023px) and (min-width: 1px) {
+	.tbl_basiclist table tbody td.step2 .comment {
+		font-size: 14px;
+	}
+}
+
+@media screen and (max-width: 739px) and (min-width: 1px) {
+	.tbl_basiclist.free_board table tbody td.step3 {
+		color: #666666;
+		display: inline-block !important;
+		width: auto !important;
+		clear: none !important;
+	}
+	.tbl_basiclist.free_board table tbody td.step2+.step3 {
+		position: relative;
+	}
+	.tbl_basiclist.free_board table tbody td.step2+.step3:after {
+		content: "";
+		width: 1px;
+		height: 11px;
+		background: #cccccc;
+		position: absolute;
+		top: 3px;
+		right: 0;
+	}
+}

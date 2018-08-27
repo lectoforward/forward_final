@@ -3,10 +3,12 @@ package com.lecto.forward.dto;
 public class Criteria {
 	private int page;
 	private int perPageNum;
+	private String boardCode;
 	
 	public Criteria() {
 		this.page = 1;
 		this.perPageNum = 10;
+		this.boardCode=null;
 	}
 	public void setPage(int page) {
 		if(page <= 0) {
@@ -24,6 +26,14 @@ public class Criteria {
 	public int getPage() {
 		return page;
 	}
+	
+	public String getBoardCode() {
+		return boardCode;
+	}
+	
+	public void setBoardCode(String boardCode) {
+		this.boardCode = boardCode;
+	}
 	// method for MyBatis SQL Mapper-
 	public int getPageStart() {
 		// limit 구문에서 시작 위치를 지정할 때 사용함.
@@ -35,6 +45,9 @@ public class Criteria {
 		// limit 뒤 숫자를 위미해서 한 페이지 당 보여지는 개수를 의미
 		return this.perPageNum;
 	}
+	
+	
+	
 	@Override
 	public String toString() {
 		return "Criteria [page=" + page + ", perPageNum=" + perPageNum + "]";

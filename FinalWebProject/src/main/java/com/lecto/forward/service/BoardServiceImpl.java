@@ -18,6 +18,7 @@ import com.lecto.forward.persistence.GradeMapper;
 import com.lecto.forward.persistence.MemberArticleViewMapper;
 import com.lecto.forward.persistence.MemberGradesMapper;
 import com.lecto.forward.persistence.MemberMapper;
+import com.lecto.forward.vo.ArticleVO;
 import com.lecto.forward.vo.BoardSearchVO;
 
 @Service
@@ -129,7 +130,7 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	public boolean updateBoard(String boardCode, String themeCode) throws Exception{
-		if(boardCode==null || themeCode==null) {
+		if(boardCode!=null || themeCode!=null) {
 			try {
 				boardMapper.updateThemeCode(boardCode, themeCode);
 			} catch (Exception e) {
@@ -219,9 +220,9 @@ public class BoardServiceImpl implements BoardService {
 			return null;
 		}else {
 			try {
-				
+				System.out.println("BoardServiceImpl税"+boardCode);
 				BoardDTO bt = boardMapper.searchBoardCode(boardCode);
-				System.out.println(bt);
+				System.out.println(bt+"たびびた");
 				return bt;
 			} catch (Exception e) {
 				System.out.println("search 神嫌");
@@ -345,4 +346,6 @@ public class BoardServiceImpl implements BoardService {
 		}
 		return code;
 	}
+	
+	
 }

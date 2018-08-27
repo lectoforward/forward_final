@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.lecto.forward.dto.Criteria;
 import com.lecto.forward.vo.ArticleVO;
 
 /** 모든 게시판 별 게시글 조회 할 때 쓰는 뷰로... 작성자 닉네임, 공지, 제목, 내용, 게시글 코드, 작성일자, 조회수, 댓글 수, 게시판코드 */
@@ -20,4 +21,14 @@ public interface ArticleViewMapper {
 	public List<ArticleVO> searchArticleViews(List<ArticleVO> articles) throws Exception;
 	/** articleCode로 게시글 찾기*/
 	public ArticleVO searchArticleCode(String articleCode) throws Exception;
+
+	/** 전체페이지 불러오기*/
+	public List<ArticleVO> listAll(String boardCode) throws Exception;
+	
+	/** 보드당 페이지 불러오기*/  
+	/*public List<ArticleVO> listPage(@Param("boardCode")String boardCode, @Param("page")int page) throws Exception;*/
+	
+	/** 보드당 페이지 불러오기*/
+	public List<ArticleVO> listCriteria(Criteria criteria) throws Exception;
+	
 }

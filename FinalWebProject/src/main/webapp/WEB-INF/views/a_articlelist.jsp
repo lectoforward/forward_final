@@ -14,7 +14,9 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <style>
+
 #sidebar {
 	float: left;
 }
@@ -26,6 +28,7 @@
 </style>
 </head>
 <body>
+	<input type="hidden" name="boardCode" value="bo2">
 	<div id="header">
 		<%@ include file="adminheader.jsp"%>
 	</div>
@@ -53,6 +56,7 @@
 							style="width: 200px" />
 						<button type="button" class="btn btn-info" onclick="location.href='./managearticles_.jsp'">검색</button>
 					</div>
+					
 					<br>
 					<table class="table table-striped active" id="tb">
 						<thead>
@@ -177,9 +181,9 @@
 						</ul>
 					</div>
 					<button class="btn btn-danger pull-right">삭제</button>
-					<a href="./addarticle.jsp" class="btn btn-success pull-right">글쓰기</a>
-					<a href="./theme.jsp" class="btn btn-warning pull-left">테마 변경</a> <a
-						href="./editboard.jsp" class="btn btn-primary pull-left">게시판수정</a>
+					<a href="/addarticle.jsp" class="btn btn-success pull-right">글쓰기</a>
+					<a id="themeChange" class="btn btn-warning pull-left">테마 변경</a> 
+					<a href="/editboard.jsp" class="btn btn-primary pull-left">게시판수정</a>
 				</div>
 			</div>
 		</div>
@@ -196,6 +200,21 @@
 			var href = "./article.jsp";
 			window.location.href = href;
 		});
+		
+		$('#themeChange').bind("click",function(){
+			
+			/* var bc = ${boardCode}; */
+			var bc = "bo2";
+			var $form = $('<form></form>');
+			$form.attr('action','/a_theme');
+			$form.attr('method','get');
+			$form.appendTo('body');
+			var code = '<input type="hidden" value="' + bc + '" name="boardCode">';
+			$form.append(code);
+			$form.submit();
+		});
+		
+		
 	});
 </script>
 </html>

@@ -1,0 +1,56 @@
+<
+style>
+
+.basic_btn{background: #58D3F7; padding:15px 40px;display: block;font-size: 0; line-height: 0;float: right;text-align: center;height: 51px;}
+
+input[type="submit"].basic_btn{background: #58D3F7;padding: 15px 40px;font-size: 18px; color: #ffffff; line-height: 1.2em; font-weight: bold; max-width: 954px;margin:0 auto;display: block;cursor: pointer;float: none;}
+
+
+.btn_save{
+	background:#58D3F7;
+	
+}
+
+
+#primary{
+	margin-top:250px;
+	
+}
+
+
+#noticeImage {
+	border: 3px solid #58D3F7;
+	width: 170px;
+	height: 120px;
+	float: left;
+	margin: 0 10px 10px 0;
+}
+
+#boardImage {
+	border: 3px solid #58D3F7;
+	width: 170px;
+	height: 120px;
+	float: left;
+	margin: 0 10px 10px 0;
+}
+
+
+
+#topImage{
+	margin-top:100px;	
+	
+}
+
+
+#topImage p{
+	position:relative;
+	bottom:j30px;
+	left:0px;
+	visibility:hidden;
+	
+}
+
+
+</
+style
+>

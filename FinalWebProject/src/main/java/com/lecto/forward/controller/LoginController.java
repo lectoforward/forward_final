@@ -39,7 +39,7 @@ public class LoginController {
 				if (memberDTO.getMemberPwd().equals(member.getMemberPwd())) {
 					session.setAttribute("login", member.getMemberId());
 					// 운영자 view에서 운영자
-					System.out.println("b");
+					
 
 					// Object로 다찾아온다.
 					Object[] managers = memberService.searchManager();
@@ -50,18 +50,18 @@ public class LoginController {
 							managerIds.put(((ManagerVO) managers[i]).getMemberId(), (ManagerVO)managers[i]);
 						}
 					}
-					System.out.println("c");
+					
 
 					// 관리자인 경우
 					if (member.getMemberId().equals("admin")) {
 						session.setAttribute("boardName", "전체 사이트");
-						System.out.println("d");
+						
 						return "/a_main";
 					}
 					// 운영자인 경우
 					else if (managerIds.containsKey((member.getMemberId()))) {
 						session.setAttribute("boardName", managerIds.get(member.getMemberId()).getBoardName());
-						System.out.println("e");
+						
 						return "/a_main";
 					}
 					// 사용자일 경우

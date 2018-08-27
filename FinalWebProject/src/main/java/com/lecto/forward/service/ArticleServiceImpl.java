@@ -1,17 +1,18 @@
 package com.lecto.forward.service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
 import javax.inject.Inject;
 
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.stereotype.Service;
 
 import com.lecto.forward.dto.ArticleDTO;
+import com.lecto.forward.dto.Criteria;
 import com.lecto.forward.persistence.ArticleMapper;
 import com.lecto.forward.persistence.ArticleViewMapper;
 import com.lecto.forward.vo.ArticleVO;
@@ -24,6 +25,12 @@ public class ArticleServiceImpl implements ArticleService{
 	
 	@Inject
 	ArticleViewMapper articleViewMapper;
+	
+	@Inject
+	private SqlSessionFactory sqlSessionFactory;
+	
+	
+	private static String namespace = "com.lecto.forward.persistence.ArticleViewMapper";
 	
 	public boolean addArticle(ArticleDTO articleDTO) {
 		if(articleDTO ==null) {
@@ -141,6 +148,41 @@ public class ArticleServiceImpl implements ArticleService{
 			e.printStackTrace();
 		}
 		return code;
+	}
+	
+	
+	@Override
+	public List<ArticleVO> listAll(String boardCode) throws Exception{
+		
+
+		return null;
+	}
+	
+	/*@Override
+	public Map<Object,Object> listPage(String boardCode, int page) throws Exception{
+		System.out.println("aa");
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		if(page<=0) {
+			page = 1;
+		}
+		
+		page = (page-1)*10;
+		System.out.println(namespace);
+		List<ArticleVO> listResult = articleViewMapper.listPage(boardCode, page);
+		System.out.println(sqlSession.selectList(namespace+boardCode,page).size());
+		
+		sqlSession.selectMap(namespace+".listPage", page, boardCode);
+		
+		 return null;
+	}*/
+	
+	@Override
+	public List<ArticleVO> listCriteria(Criteria cri) throws Exception{
+		/*SqlSession sqlSession = sqlSessionFactory.openSession();*/
+		/*return sqlSession.selectList(namespace+".listCriteria",cri);*/
+		
+		return articleViewMapper.listCriteria(cri);
+		 
 	}
 	
 }

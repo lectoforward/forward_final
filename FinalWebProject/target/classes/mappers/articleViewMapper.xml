@@ -100,5 +100,22 @@
 	 	from article_view
 	 	where article_code=#{articleCode}
 	 </select>
+	 <select id="listCriteria" resultMap="articleVO">
+	 	select <include refid="columns"/>
+	 	from article_view
+	 	where board_code=#{boardCode}
+	 	order by article_date desc
+	 	limit #{pageStart}, #{perPageNum}
+	 
+	 </select>
+	 
+	 <!-- <select id="listPage" resultMap="articleVO">
+	 	select <include refid="columns" />
+	 	from article_view
+	 	where board_code='${boardCode}'
+	 	order by article_date
+	 	limit ${page},10
+
+	 </select> -->
 	 	
 	 </mapper>

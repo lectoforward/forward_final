@@ -34,7 +34,7 @@
 <link rel='dns-prefetch' href='//s.w.org' />
 <link rel="alternate" type="application/rss+xml" title="피드" href="#" />
 <link rel="alternate" type="application/rss+xml" title="댓글 피드" href="#" />
-<!-- <link rel="stylesheet" type="text/css" href="./resources/css/theme2.css"> -->
+
 <style type="text/css">
 img.wp-smiley,
 img.emoji {
@@ -73,7 +73,8 @@ img.emoji {
 <link rel="alternate" type="text/xml+oembed" href="./resources/json/embed.json" />
 <style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}
 </style>
-	 <link rel="stylesheet" href="http://gangwon-fc.com/wp-content/themes/gangwonfc/css/template.css?20170607" type="text/css" media="all">
+	 <!-- <link rel="stylesheet" href="http://gangwon-fc.com/wp-content/themes/gangwonfc/css/template.css?20170607" type="text/css" media="all"> -->
+<link rel="stylesheet" type="text/css" href="./resources/css/theme2.css">	
 	<link rel="stylesheet" href="./resources/css/metabrain-editor.css" type="text/css" media="all">
 	<script type="text/javascript" src="./resources/js/common.js"></script>
 </head>
@@ -82,10 +83,10 @@ img.emoji {
 <div id="masthead" class="site-header" role="banner"><!-- site-header-menu 영역 호버시 nav_on 클래스 적용   .search_btn 클릭시 search_on 클래스 적용-->
 			<div class="hover_bg"></div>
 			<!-- 데이터 -->
-			<form role="form" action="m_board?boardCode=bo2&page=1" method="GET" id="boardSelect">
+			<form role="form" action="m_board" method="GET" id="boardSelect">
 				<%-- <input type="hidden" name="boardCode" value="${boardCode}"> --%>
 			
-				<<!-- input type="hidden" name="boardCode" value="bo2"> -->
+			<input type="hidden" name="boardCode" value="bo2">
 			</form>
 			<!-- 데이터 -->
 			<!-- 서치박스 -->

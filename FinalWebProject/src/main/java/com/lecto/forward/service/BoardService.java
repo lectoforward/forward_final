@@ -5,6 +5,7 @@ import java.util.List;
 import com.lecto.forward.dto.BoardDTO;
 import com.lecto.forward.dto.GradeDTO;
 import com.lecto.forward.dto.MemberGradesDTO;
+import com.lecto.forward.vo.ArticleVO;
 import com.lecto.forward.vo.BoardSearchVO;
 
 public interface BoardService {
@@ -25,6 +26,6 @@ public interface BoardService {
 	public boolean deleteBoard(String boardCode) throws Exception;
 	public boolean deleteBoard(List<String> boardCode) throws Exception;		// mapper의 delete 리턴값이 int 인데 삭제된 게시판 목록을 어떻게?
 	public boolean deleteBoardName(List<String> boardName) throws Exception;
-			
+	
 
 }

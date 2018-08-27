@@ -34,17 +34,17 @@ public class BoardController{
 	
 	@RequestMapping(value="/ad_addboard", method=RequestMethod.GET)
 	public String addBoard(@Param("boardCode")String boardName) throws Exception{
-		System.out.println(boardName+"하하");	
+		/*System.out.println(boardName+"하하");*/	
 		return "/ad_addboard";
 	}
 	@RequestMapping(value="/ad_addboard", method=RequestMethod.POST)
 	public String addBoard2(String boardName, String gradeDate, String themeCode, String divgrade,
 			String gradeNum1, String gradeNum2, String gradeNum3, String gradeName1, String gradeName2, String gradeName3,
 			String articleCount1, String articleCount2, String articleCount3, Model model) throws Exception{
-		System.out.println(boardName+"더하기 포스트");
+		/*System.out.println(boardName+"더하기 포스트");
 		System.out.println(gradeDate+"그레이드 업데이트");
 		System.out.println(gradeNum2+"그레이드 넘 ");
-		System.out.println(articleCount3+"아티클 카운트");
+		System.out.println(articleCount3+"아티클 카운트");*/
 		
 		BoardDTO boardDTO = new BoardDTO("bo1003",boardName, gradeDate, "th1");
 		
@@ -123,6 +123,9 @@ public class BoardController{
 		return "/ad_boardlist";
 	}*/
 	
+	
+	
+	/**이게 원본*/
 	@RequestMapping(value="/a_editboard", method=RequestMethod.GET)
 	public String updateBoard(@RequestParam("clickboardCode")String clickboardCode, Model model) {
 		try {
@@ -144,6 +147,14 @@ public class BoardController{
 		
 	}
 	
+/*	@RequestMapping(value="/a_editboard", method=RequestMethod.GET)
+	public String updateBoard() {
+		
+		
+		
+		return "a_editboard";
+	}
+	*/
 	
 	@RequestMapping(value="/ad_boardlist", method=RequestMethod.GET)
 	public String searchBoard2(String searchWay, String keyword,Model model,HttpServletRequest request) {
@@ -189,8 +200,8 @@ public class BoardController{
 	
 	@RequestMapping(value="/deleteBoardList", method =RequestMethod.GET)
 	public String deleteBoardListGET(HttpServletRequest request,  String boardName2,Model model) throws Exception{
-		System.out.println("딜리트 겟");
-		System.out.println(boardName2+"보드코드 겟");
+		/*System.out.println("딜리트 겟");
+		System.out.println(boardName2+"보드코드 겟");*/
 //		String[] str = request.getParameterValues("boardName2");
 		
 //		for(int i=0;i<str.length;i++) {
@@ -218,5 +229,10 @@ public class BoardController{
 
 		return "redirect:/ad_boardlist";
 	}
+	
+	
+	
+	
+	
 	
 }

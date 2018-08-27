@@ -64,7 +64,7 @@ private static final Logger logger = LoggerFactory.getLogger(MemberController.cl
 	
 	@RequestMapping(value="/find_pwd_popup", method=RequestMethod.POST)
 	public String findPwdPOST(HttpSession session,HttpServletRequest req) {
-		System.out.println("비번찾기 모달에서 넘어왔다.");
+		
 		String memberId = (String)session.getAttribute("memberId");
 		String newPwd = req.getParameter("changePwd");
 		System.out.println(memberId+","+newPwd);

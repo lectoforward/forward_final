@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ko-KR">
 <head>
@@ -180,7 +181,7 @@ img.emoji {
 		<!-- .헤더 -->
 		<div id="" class="site-content">
 <!-- 상단배너 -->
-
+<c:if test="${themeCode eq 'th1'}">
 <div class="pg_topbannerbx">
 	<div class="bg"></div>
 	<div class="max_container">
@@ -198,6 +199,7 @@ img.emoji {
 					</div>
 		<!-- .타이틀 박스 -->
 	</div>
+	</c:if>
 </div>
 <!-- .상단배너 -->
 <div id="primary" class="content-area">
@@ -213,6 +215,11 @@ img.emoji {
 						<!-- 컨텐츠 시작 -->
 						<!-- 싱글페이지 -->
 						<!--  데이터  -->
+						
+						<!-- 테마1일때 여기서부터 -->
+						
+						
+						<c:if test="${themeCode eq 'th1'}">
 						<div class="single_pgbx single_edit">
 							<form id="formWrite">
 								<input type="hidden" name="job" value="articleAdd">
@@ -255,6 +262,71 @@ img.emoji {
 								<!-- .목록버튼 -->
 							</form>
 						</div>
+						</c:if>
+						<!-- 테마1일때 여기까지 -->
+						
+						<!-- 테마2일때 -->
+						<c:if test="${themeCode eq 'th2'}">
+						<link rel="stylesheet" type="text/css" href="./resources/css/writearticlecss2.css">
+						<div id="topImage">
+							<a href="#">
+							<img src="./resources/images/notice.png" class="imagesHover"
+							id="noticeImage" alt="notice" border="3px" width="100px" align="left">
+							</a>
+								
+								
+							<a href="#">							
+							<img src="./resources/images/board.png" class="imagesHover"
+							id="boardImage" alt="board" border="3px" width="100px" align="left">
+							</a>
+						
+						</div>
+						<div class="single_pgbx single_edit">
+							<form id="formWrite">
+								<input type="hidden" name="job" value="articleAdd">
+								<input type="hidden" name="userId" value="${sessionScope.id }" />
+								<input type="hidden" name="content" id="content" value=""/>
+								<input type="hidden" name="boardCode" value="${boardCode}" />
+								<input type="hidden" name="articleHits" value="0">
+								<!--<input type="hidden" name="write_nonce" value="1fe20652f2"/>
+								<input type="hidden" name="status" value="publish">
+								<input type="hidden" name="category" value="14">-->
+								<input type="hidden" name="action" value="write_board"> 
+						<!--  데이터  -->
+
+								<!--  싱글페이지 헤더 -->
+								<div class="single_headbx two" >
+									<div class="single_tblbx">
+										<div class="title_bx"><input type="text" name="articleTitle" class="single_edit_title" placeholder="제목을 입력해주세요." value=""></div>
+									</div>
+								</div>
+								<!--  .싱글페이지 헤더-->
+								<!-- 싱글컨텐츠 -->
+								<div class="single_contbx">
+									<div class="single_container">
+										<div>
+											<textarea name="Content" id="articleContent"></textarea>
+										</div>
+										<!-- <div class="meta_editbx">사이드 뷰박스 클릭시 fix_view 클래스 추가
+											contentbx
+											<div class="cont_edit_bx" id="content_editor"></div>
+											<textarea name="articleContent" style="display:none"></textarea>
+											.contentbx
+										</div> -->
+									</div>
+								</div>
+								<!-- .싱글컨텐츠 -->
+								<!-- 목록버튼 -->
+								<div class="basic_btnbx">
+									<a class="basic_btn btn_save"><span class="text">글등록</span></a>
+								</div>
+								<!-- .목록버튼 -->
+							</form>
+						</div>
+						</c:if>
+						
+						
+						<!-- 테마2일때 여기까지 -->
 						<!-- .싱글페이지 -->
 						<!-- .컨텐츠 시작 -->
 					</div><!-- .entry-content -->
