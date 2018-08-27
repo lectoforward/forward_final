@@ -55,7 +55,11 @@ public class ArticleController{
 			int totalCount = searchTotalArticle.size();
 			pageMaker.setTotalCount(totalCount);
 			model.addAttribute("articles", articleService.searchArticle(boardCode));
+			
 			model.addAttribute("pageMaker", pageMaker);
+			
+			page = pageMaker.getCri().getPage();
+			/*model.addAttribute("page",pageMaker.getCri().getPage());*/
 			
 			
 		} catch (Exception e) {
@@ -128,15 +132,27 @@ public class ArticleController{
 		return "/m_detailarticle";	
 	}*/
 	
+	/**게시글 수정*//*
+	@RequestMapping(value="/m_modify", method=RequestMethod.GET)
+	public String modifyArticle(@RequestParam("boardCode")String boardCode, @RequestParam("articleCode") String articleCode,
+			@RequestParam("page")int page) {
+			
+	
+		
+		
+		
+		return "redirect:/m_board?boardCode="+boardCode+"&page="+page;
+	}*/
+	
+	
+	
 	/**게시글 자세히 읽기 page처리*/
 	@RequestMapping(value="/m_detailarticle", method=RequestMethod.GET)
 	public ModelAndView read(@RequestParam("boardCode") String boardCode,@RequestParam("articleCode")String articleCode,
 			@RequestParam("page") int page, Model model, @ModelAttribute("cri")Criteria cri) {
 		//articleCode로 boardCode를 찾아옴
 		//page, perPageNum, 
-		System.out.println("여기여기여기");
-		System.out.println("boardCode"+boardCode);
-		
+	
 		ModelAndView mav = new ModelAndView();
 		
 		mav.setViewName("/m_detailarticle");
@@ -147,14 +163,16 @@ public class ArticleController{
 		if(articleVO != null) {
 			//조회수 처리
 			mav.addObject("articleVO", articleVO);		
+			mav.addObject("page",page);
 			BoardDTO boardDTO;
 			try {
-				System.out.println("boardCode2"+boardCode);
+				
 				boardDTO = boardService.searchBoardCode(boardCode);
-				System.out.println(boardDTO.getBoardCode());
+				
 				String themeCode = boardDTO.getThemeCode();
-				System.out.println("테마코드는"+themeCode);
+				mav.addObject("boardCode",boardCode);
 				mav.addObject("themeCode", themeCode);
+				mav.addObject("articleCode", articleCode);
 			} catch (Exception e) {
 			
 				e.printStackTrace();

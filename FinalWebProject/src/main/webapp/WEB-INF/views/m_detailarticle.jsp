@@ -170,34 +170,35 @@ img.wp-smiley, img.emoji {
 											</div>
 										</div>
 										<!-- 싱글페이징 -->
-										<div class="single_paging">
+										<!-- <div class="single_paging">
 											<ul>
 												<li class="prev"><a class="itembx" href="#;">
 														<div class="dis_tblbx">
 															<div class="tbl_cellbx subbx">
 																<span class="text">이전글</span>
 															</div>
-															<div class="tbl_cellbx title">등록된 글이 없습니다.</div>
+															<div class="tbl_cellbx title"></div>
 														</div>
 												</a></li>
 												<li class="next">
-													<div class="dis_tblbx">
+													<div class="dis_tblbx"><a class="itembx" href="#;">
 														<div class="tbl_cellbx subbx">
 															<span class="text">다음글</span>
 														</div>
-														<div class="tbl_cellbx title">힘냅시다!!! 꾸역꾸역 승점은 땁니다.</div>
-													</div> </a>
-												</li>
+														<div class="tbl_cellbx title"></div>
+													</div> 
+												</a></li>
 											</ul> 
-										</div>
+										</div> -->
 										<!-- .싱글페이징 -->
 										<!-- 목록버튼 -->
 										<div class="list_btnbx">
-											<a href="/m_detailarticle" class="list_btn"><span
+											<a href="/m_board?boardCode=${boardCode}&page=${page}" class="list_btn"><span
 												class="text">목록보기</span><i class="icon_item"></i></a> <a
 												href="#;" class="basic_btn mr5 del_btn" data-post-id="34855"><span
-												class="text">삭제</span></a> <a href="#" class="basic_btn mr5"><span
-												class="text">수정</span></a>
+												class="text">삭제</span></a>
+												<a href="/m_modify?boardCode=bo2&page=${page}&articleCode=${articleCode}" class="basic_btn mr5"><span
+												class="text" id="articleModify">수정</span></a>
 										</div>
 										<!-- .목록버튼 -->
 									</div>
@@ -266,34 +267,35 @@ img.wp-smiley, img.emoji {
 											</div>
 										</div>
 										<!-- 싱글페이징 -->
-										<div class="single_paging">
+									<!-- 	<div class="single_paging">
 											<ul>
 												<li class="prev"><a class="itembx" href="#;">
 														<div class="dis_tblbx">
 															<div class="tbl_cellbx subbx">
 																<span class="text">이전글</span>
 															</div>
-															<div class="tbl_cellbx title">등록된 글이 없습니다.</div>
+															<div class="tbl_cellbx title"></div>
 														</div>
 												</a></li>
-												<li class="next">
+												<li class="next"><a class="itembx" href="#;">
 													<div class="dis_tblbx">
 														<div class="tbl_cellbx subbx">
 															<span class="text">다음글</span>
 														</div>
-														<div class="tbl_cellbx title">힘냅시다!!! 꾸역꾸역 승점은 땁니다.</div>
-													</div> </a>
-												</li>
+														<div class="tbl_cellbx title"></div>
+													</div> 
+												</a></li>
 											</ul>
-										</div>
+										</div> -->
 										<!-- .싱글페이징 -->
 										<!-- 목록버튼 -->
 										<div class="list_btnbx">
-											<a href="/m_detailarticle.jsp" class="list_btn"><span
-												class="text">목록보기</span><i class="icon_item"></i></a> <a
-												href="#;" class="basic_btn mr5 del_btn" data-post-id="34855"><span
-												class="text">삭제</span></a> <a href="#" class="basic_btn mr5"><span
-												class="text">수정</span></a>
+											<a href="/m_board?boardCode=${boardCode}&page=${page}" class="list_btn">
+											<span class="text">목록보기</span><i class="icon_item"></i></a>
+											 <a href="#;" class="basic_btn mr5 del_btn" data-post-id="34855">
+											 <span class="text">삭제</span></a> 
+											 <a href="#" class="basic_btn mr5">
+											 <span class="text">수정</span></a>
 										</div>
 										<!-- .목록버튼 -->
 									</div>

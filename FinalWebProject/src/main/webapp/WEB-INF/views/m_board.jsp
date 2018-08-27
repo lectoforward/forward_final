@@ -15,6 +15,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="format-detection" content="telephone=no">
 <link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script>
@@ -22,6 +24,9 @@
 		html.className = html.className.replace(/\bno-js\b/, 'js')
 	})(document.documentElement);
 </script>
+
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>SMASH</title>
 
 <link rel='dns-prefetch' href='//code.jquery.com' />
@@ -233,7 +238,7 @@ img.wp-smiley, img.emoji {
 								<!-- 페이징 -->
 								<form id="jobForm">
 									<input type="hidden" name="page"
-										value=${pageMaker.cri.perPageNum}> <input
+										value=${pageMaker.cri.page}> <input
 										type="hidden" name="perPageNum"
 										value=${pageMaker.cri.perPageNum}>
 								</form>
@@ -248,7 +253,7 @@ img.wp-smiley, img.emoji {
 										<c:forEach begin="${pageMaker.startPage}"
 											end="${pageMaker.endPage}" var="idx">
 											<li
-												<c:out value="${pageMaker.cri.page == idx?'class=active':''}"/>>
+												<c:out value="${pagfeMaker.cri.page == idx?'class=active':''}"/>>
 												<a href="m_board?boardCode=${boardCode}&page=${idx}">${idx}</a>
 
 
@@ -290,10 +295,10 @@ img.wp-smiley, img.emoji {
 							</div> -->
 
 								<div id="topImage">
-									<a href="#"> <img src="./resources/images/notice.png"
+									<a href="/m_board?boardCode=bo1&page=10"> <img src="./resources/images/notice.png"
 										class="imagesHover" id="noticeImage" alt="notice" border="3px"
 										width="100px" align="left">
-									</a> <a href="#"> <img src="./resources/images/board.png"
+									</a> <a href="/m_board?boardCode=bo2&page=10"> <img src="./resources/images/board.png"
 										class="imagesHover" id="boardImage" alt="board" border="3px"
 										width="100px" align="left">
 									</a>
@@ -333,12 +338,15 @@ img.wp-smiley, img.emoji {
 											</tr>
 										</thead>
 										<tbody id="articleList">
-											<c:forEach items="${articles}" var="articleVO">
+											<c:forEach items="${list}" var="articleVO">
 												<tr>
 													<!-- no -->
 													<td>${articleVO.articleCode}</td>
 													<!-- 제목 -->
-													<td>${articleVO.articleTitle}</td>
+													<td><a
+														href='m_detailarticle${pageMaker.makeQuery(pageMaker.cri.page)}&articleCode=${articleVO.articleCode}&boardCode=bo2'>
+															${articleVO.articleTitle}</a></td>
+
 													<!-- 작성자 -->
 													<td>${articleVO.memberNickname}</td>
 													<!-- 작성일 -->
@@ -404,22 +412,40 @@ img.wp-smiley, img.emoji {
 
 								<!--. 글쓰기 버튼 -->
 								<!-- 페이징 -->
-								<div class="paging">
-									<ul data-current-paged="1">
-										<li><a href="#" data-paged="1" class="item">1</a></li>
-										<li><a href="#" data-paged="2" class="item">2</a></li>
-										<li><a href="#" data-paged="3" class="item">3</a></li>
-										<li><a href="#" data-paged="4" class="item">4</a></li>
-										<li><a href="#" data-paged="5" class="item">5</a></li>
-										<li><a href="#" data-paged="6" class="item">6</a></li>
-										<li><a href="#" data-paged="7" class="item">7</a></li>
-										<li><a href="#" data-paged="8" class="item">8</a></li>
-										<li><a href="#" data-paged="9" class="item">9</a></li>
-										<li><a href="#" data-paged="10" class="item">10</a></li>
-										<li class="next_btn"><a href="#" data-paged="11"
-											class="item">next</a></li>
-										<li class="last_btn"><a href="#" class="item">last</a></li>
+								<form id="jobForm">
+									<input type="hidden" name="page"
+										value=${pageMaker.cri.page}> <input
+										type="hidden" name="perPageNum"
+										value=${pageMaker.cri.perPageNum}>
+								</form>
+
+								<div class="text-center">
+									<ul class="pagination">
+										<c:if test="${pageMaker.prev}">
+											<li><a
+												href="m_board?boardCode=${boardCode}&page=${pageMaker.startPage -1}">&laquo;</a></li>
+										</c:if>
+
+										<c:forEach begin="${pageMaker.startPage}"
+											end="${pageMaker.endPage}" var="idx">
+											<li
+												<c:out value="${pagfeMaker.cri.page == idx?'class=active':''}"/>>
+												<a href="m_board?boardCode=${boardCode}&page=${idx}">${idx}</a>
+
+
+											</li>
+
+										</c:forEach>
+
+
+										<c:if test="${pageMaker.next && pageMaker.endPage>0}">
+											<li><a
+												href="m_board?boardCode=${boardCode}&page=${pageMaker.endPage+1}">&raquo;</a></li>
+										</c:if>
+
+
 									</ul>
+
 								</div>
 
 
@@ -563,14 +589,14 @@ img.wp-smiley, img.emoji {
 		$('.topImagetext2').css("visibility", "hidden");
 	});
 	
-	
+
 	$(".pagination li a").on("click", function(event){
 		event.preventDefault();
 		var targetPage = $(this).attr("href");
 		var page = ${page};
 		var jobForm=$("#jobForm");
 		jobForm.find("[name='page']").val(targetPage);
-		jobForm.attr("action","/m_board/boardCode=bo2&");
+		jobForm.attr("action","/m_board/boardCode=bo2&page="+"'"+${pageMaker.cri.page}+"'");
 		jobForm.attr("method","get");
 		jobForm.submit();
 	});

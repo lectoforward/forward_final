@@ -143,7 +143,7 @@ img.emoji {
 							<a href="index.jsp">Home</a>
 							<ul class="sub-menu">
 								<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-92 board" id="bo2"><a href="#">공지사항</a></li>
-								<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-95 board"><a href="#">자유게시판</a>
+								<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-95 board"><a href="/m_board?boardCode=bo2&page=1">자유게시판</a>
 									<ul class="sub-menu">
 										<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7014"><a href="#">Q&#038;A</a></li>
 								</ul>

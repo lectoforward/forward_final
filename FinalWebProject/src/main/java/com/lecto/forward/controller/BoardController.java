@@ -175,6 +175,7 @@ public class BoardController{
 				for(int i=0;i<viewList.size();i++) {
 					System.out.println(viewList.get(i));
 				}
+			
 				model.addAttribute("boardViewList", viewList);
 				model.addAttribute("mas", "success");
 			}

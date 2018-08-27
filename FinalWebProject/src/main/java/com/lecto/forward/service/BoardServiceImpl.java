@@ -220,9 +220,9 @@ public class BoardServiceImpl implements BoardService {
 			return null;
 		}else {
 			try {
-				System.out.println("BoardServiceImpl税"+boardCode);
+				
 				BoardDTO bt = boardMapper.searchBoardCode(boardCode);
-				System.out.println(bt+"たびびた");
+				
 				return bt;
 			} catch (Exception e) {
 				System.out.println("search 神嫌");
