@@ -32,12 +32,12 @@ public class BoardController{
 		return "/index";
 	}
 	
-	@RequestMapping(value="/ad_addboard", method=RequestMethod.GET)
-	public String addBoard(@Param("boardCode")String boardName) throws Exception{
-		System.out.println(boardName+"하하");	
+	@RequestMapping(value="/ad_addboardView", method=RequestMethod.POST)
+	public String addBoard(@Param("boardCode")String boardCode) throws Exception{
+		System.out.println(boardCode+"하하");	
 		return "/ad_addboard";
 	}
-	@RequestMapping(value="/ad_addboard", method=RequestMethod.POST)
+	/*@RequestMapping(value="/ad_addboard", method=RequestMethod.POST)
 	public String addBoard2(String boardName, String gradeDate, String themeCode, String divgrade,
 			String gradeNum1, String gradeNum2, String gradeNum3, String gradeName1, String gradeName2, String gradeName3,
 			String articleCount1, String articleCount2, String articleCount3, Model model) throws Exception{
@@ -65,7 +65,43 @@ public class BoardController{
 		model.addAttribute("boardViewList",boardService.searchBoard());
 		
 		return "redirect:/ad_boardlist";
+	}*/
+
+	@RequestMapping(value="/ad_addboard", method=RequestMethod.POST)
+	public String addBoard2(String boardName, String gradeDate, String themeCode, String divgrade,
+			@RequestParam("gradeNum")String[] gradeNum, @RequestParam("gradeName") String[] gradeName,
+			@RequestParam("articleCount")String[] articleCount, Model model) throws Exception{
+		
+		BoardDTO boardDTO = new BoardDTO(boardService.generateBoardCode(),boardName, gradeDate, "th1");
+		System.out.println(boardDTO);
+	
+		boardService.addBoard(boardDTO);
+		GradeDTO gt;
+		List<GradeDTO> gradeList = new ArrayList<GradeDTO>();
+		for(int i=0;i<gradeNum.length;i++) {
+			System.out.println(gradeNum[i]);
+			System.out.println(gradeName[i]);
+			System.out.println(articleCount[i]);
+			 gt =new GradeDTO(Integer.parseInt(gradeNum[i]),gradeName[i],Integer.parseInt(articleCount[i]),boardDTO.getBoardCode());
+//			
+//			gt.setBoardCode(boardDTO.getBoardCode());
+//			gt.setGradeNum(Integer.parseInt(gradeNum[i]));
+//			gt.setGradeName(gradeName[i]);
+//			gt.setArticleCount(Integer.parseInt(articleCount[i]));
+			System.out.println(gt);
+			gradeList.add(gt);
+		}
+	
+		
+		boardService.addGrade(gradeList);
+		
+		MemberGradesDTO memberGrades = new MemberGradesDTO(boardService.generateBoardMemberGrade(),boardDTO.getBoardCode(),"관리자", -1);
+		boardService.addMemberGrades(memberGrades);
+		model.addAttribute("boardViewList",boardService.searchBoard());
+		
+		return "redirect:/ad_boardlist";
 	}
+	
 	
 	/*@RequestMapping(value="/ad_boardlist", method=RequestMethod.POST)
 	public String searchBoard(String boardName,String searchWay, String keyword,Model model) {
@@ -124,21 +160,29 @@ public class BoardController{
 	}*/
 	
 	@RequestMapping(value="/a_editboard", method=RequestMethod.GET)
-	public String updateBoard(@RequestParam("clickboardCode")String clickboardCode, Model model) {
+	public String updateBoard(@RequestParam("clickboardCode")String clickboardCode, Model model, String searchWay, String keyword, HttpServletRequest request) {
 		try {
-			System.out.println(clickboardCode+"수정");
-			BoardDTO boardDTO = boardService.searchBoardCode(clickboardCode);
-			System.out.println(boardDTO+"231");
-			model.addAttribute("boardDTO", boardDTO);
-			List<GradeDTO> gradeDTO = boardService.searchGrade(clickboardCode);
-			for(int i=0;i<gradeDTO.size();i++) {
-				System.out.println(gradeDTO.get(i));
+			if(clickboardCode.equals("f")) {
+//				System.out.println("들어옴??");
+				return searchBoard2( searchWay,  keyword, model, request);
+			}else{
+				System.out.println(clickboardCode + "수정");
+				BoardDTO boardDTO = boardService.searchBoardCode(clickboardCode);
+				System.out.println(boardDTO + "231");
+				model.addAttribute("boardDTO", boardDTO);
+				List<GradeDTO> gradeDTO = boardService.searchGrade(clickboardCode);
+				System.out.println(gradeDTO.size()+" 사이즈 무엇?");
+				for (int i = 0; i < gradeDTO.size(); i++) {
+					System.out.println("안들어와?");
+					System.out.println(gradeDTO.get(i));
+				}
+				model.addAttribute("gradeDTO", gradeDTO);
+				model.addAttribute("size",gradeDTO.size());
+				return "/a_editboard";
 			}
-			model.addAttribute("gradeDTO", gradeDTO);
-			return "/a_editboard";
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println(e +" 업데이트퓨 오류");
 			return "/a_editboard";
 		}
 		
@@ -152,12 +196,12 @@ public class BoardController{
 		try {
 			List<BoardSearchVO> viewList = new ArrayList<BoardSearchVO>();
 			List<Object> obj = new ArrayList<Object>();
-			if(keyword==null) {
+			if(keyword==null|| keyword.isEmpty()) {
 				System.out.println("여기 널");
 				model.addAttribute("boardViewList", boardService.searchBoard());
 			}else {
 				System.out.println(keyword);
-				obj = (List<Object>) request.getAttribute("list");
+				obj = Arrays.asList(request.getAttribute("list"));
 				for(int i=0;i<obj.size();i++) {
 					viewList.add((BoardSearchVO)obj.get(i));
 				}
@@ -177,14 +221,22 @@ public class BoardController{
 	
 	
 	@RequestMapping(value="/searchBoardWay", method=RequestMethod.POST	)
-	public String searchBoard(String searchWay, String keyword,Model model, HttpServletRequest request) throws Exception{
+	public String searchBoard(String searchWay,String boardCodeforarticle, String keyword,Model model, HttpServletRequest request) throws Exception{
 		System.out.println(searchWay);
 		System.out.println(keyword);
-		List<BoardSearchVO> list = boardService.searchBoard(searchWay, keyword);
-		request.setAttribute("list", list);
-		model.addAttribute("boardViewList", list);
-		model.addAttribute("msg", "success");
-		return searchBoard2(searchWay, keyword,model,request);	
+		System.out.println(boardCodeforarticle+"???");
+		if(keyword==null || keyword.isEmpty()) {
+//			System.out.println("하하하22");
+			model.addAttribute("boardViewList", boardService.searchBoard());
+			
+		}else {
+			List<BoardSearchVO> list = boardService.searchBoard(searchWay, keyword);
+			request.setAttribute("list", list);
+			model.addAttribute("boardViewList", list);
+			model.addAttribute("msg", "success");
+//			return searchBoard2(searchWay, keyword, model, request);
+		}
+		return "/ad_boardlist";
 	}
 	
 	@RequestMapping(value="/deleteBoardList", method =RequestMethod.GET)

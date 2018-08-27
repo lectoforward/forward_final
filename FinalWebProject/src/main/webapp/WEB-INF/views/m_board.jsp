@@ -170,6 +170,8 @@ img.emoji {
 										<td>${articleVO.memberNickname}</td>
 										<!-- 작성일 -->
 										<td>${articleVO.articleDate}</td>
+										<td><input type="hidden" name="test" id ="test" value="${articleVO.articleCode} }">
+										
 										<!-- 조회수-->
 										<td><span class="badge bg-red">${articleVO.articleHits }</span></td>
 									</tr>
@@ -239,7 +241,7 @@ img.emoji {
 		     $form.attr('method', 'get');
 		     $form.appendTo('body');
 		     var articleCd = '<input type="hidden" name="articleCode" value="' + id + '" articleCode="$(articleCode}">';
-		     alert(articleCd);
+		      /* alert(articleCd); */ 
 		     $form.append(articleCd);
 		     $form.submit();
 		});

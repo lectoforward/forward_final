@@ -37,6 +37,15 @@
 		board_member_grade =#{boardMemberGrade}
 	</update>
 	
+	<update id="updateGradeNum">
+		update member_grades_tb set
+		grade_num =#{gradeNum}
+		where
+		board_code=#{boardCode}
+		and
+		member_id = #{memberId}		
+	</update>
+	
 	<update id="updateMemberGrades" parameterType="java.util.List">
 			<foreach collection="list" item="item" separator=";" index="index">
 			update member_grades_tb set
@@ -76,7 +85,7 @@
 		select <include refid="columns" />
 		from member_grades_tb
 		where
-		member_id = #{memberId}
+		grade_num>0
 	</select>
 	
 	<select id="searchBoardGrades" resultMap="memberGrades">

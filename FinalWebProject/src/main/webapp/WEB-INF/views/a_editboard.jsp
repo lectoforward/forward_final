@@ -19,6 +19,10 @@
   		clear:both;
   		content:"";
   	}
+  	 	 	#btn_addGrade{
+  		margin: 4px 20px 0;
+  	}
+ 
   </style>
 </head>
 <body>
@@ -47,11 +51,11 @@
 						<label for="boardName">게시판명</label>
                         <input type="text" class="form-control" id="boardName" name="boardName" placeholder="게시판명을 입력해 주세요" value="${boardDTO.boardName }">
                     </div>
-                    <label for="divgrade">분류 선택</label>
+                    <label for="divgrade">게시판 등급 설정
+                   			<input type="button" class="Radios2" id="btn_addGrade" value="추가">
+                    		<input type="button" class="Radios2" id="btn_deleteGrade" value="삭제">
+                    </label>
                     <div class="form-group grade">
-                    	3분류 : <input type="radio" class="Radios2" id="treetier" name="divgrade" value="3" checked>
-                    	<span>&nbsp&nbsp</span>
-                    	4분류 : <input type="radio" class="Radios2" id="fourtier" name="divgrade" value="4">
                     	<br>
                         <div class="table-responsive text-center">
                         	<table class="table" style="width:100%">
@@ -62,10 +66,10 @@
 	                        			<th>등업기준</th>
 	                        		</tr>
                         		</thead>
-                        		<tbody>
+                        		<tbody id=tbody>
                         			<c:forEach var="grade" items = "${gradeDTO }" varStatus="status">
                         			<tr>
-                        				<td  width="30%"><span>${status.index+1 }</span></td>
+                        				<td  width="30%"><span>${status.index+1 }</span><input type="hidden" value="${status.index+1}" id="gradeIndex"></td>
                         				<td><input type="hidden" name="gradeNum" value="${grade.gradeNum}"></td>
                         				<td><input type="text" class="col-sm-10" id="gradeName" name="gradeName" value="${grade.gradeName}"></td>
                         				<td><input type="text" class="col-sm-10" id="articleCount" name="articleCount" value="${grade.articleCount}"></td>
@@ -77,10 +81,15 @@
                     </div>
                     <label for="year">등급업 기준일 변경</label>
                     <div class="grade2">
-	                    <div class="form-group">
+	                    <div class="form-group"><input type="hidden" name="test" id="test" value="${boardDTO.gradeUpDate}">
 							<script class="birth_sc">
+								var test = $('#test').val();
+								alert(test);
 								document.write("<select name='gradeUpDate'>");
-								for (i=1;i<=31;i++) document.write("<option value='"+ i +"'>"+i+"일</option>"); 
+								if(test!=null){
+									document.write("<option value='"+ test +"'>"+test+"</option>");
+								}
+								for (i=1;i<=31;i++) document.write("<option value=' "+ i +" '>"+i+"일</option>"); 
 								document.write("</select> </font>");
 							</script>
 	                    </div>
@@ -118,12 +127,32 @@
 	    		
 	    	}
 	    }); */
-	     
+	    var i=${size}+1;
+		var j=0;
+		
 	    $('#themeChange').click(function(){
 	    	$('#updateform').attr("method", "post");
 	    	$('#updateform').attr("action", "a_editboard");
 	    	$('#updateform').submit();
 	    }); 
+	    
+		$('#btn_addGrade').click(function(){	
+		 	$('#tbody').append(
+	    			$('<tr>').append($('<td  width="30%"><span>'+(i-j)+'</span></td>'),
+	    					$('<td>').append('<input type="hidden" name="gradeNum" value="'+i+'"></td>'),
+	    					$('<td>').append('<input type="text" class="col-sm-10" name="gradeName"></td>'),
+	    					$('<td>').append('<input type="text" class="col-sm-10" name="articleCount"></td>') /*,
+	    					$('<td>').append('<input type="button" class="col-sm-10 Radios2" id="btn_deleteGrade" name="btn_deleteGrade" value="삭제"></td>')*/) )
+	    					i++; 
+	    });
+		
+		 $('#btn_deleteGrade').click(function(){
+			if((i-j)>2){
+			$('#tbody tr:last').remove();		//마지막 행 삭제	
+			j++;
+			}
+		}); 
+	    
 	    
 	});
 </script>

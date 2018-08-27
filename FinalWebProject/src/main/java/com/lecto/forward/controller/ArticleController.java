@@ -6,7 +6,6 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +14,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.lecto.forward.dto.ArticleDTO;
+import com.lecto.forward.dto.BoardDTO;
 import com.lecto.forward.service.ArticleService;
+import com.lecto.forward.service.BoardService;
+import com.lecto.forward.service.CommentService;
 import com.lecto.forward.vo.ArticleVO;
 
 
@@ -24,12 +26,34 @@ public class ArticleController{
 	
 	@Autowired
 	ArticleService articleService;
+	@Autowired
+	BoardService boardService;
+	@Autowired
+	CommentService commentService;
+	
 
-	/*boardCode를 이용해 게시판별 게시글목록을 가져옴*/
+	/*boardCode를 이용해 게시판별 게시글목록을 가져옴
 	@RequestMapping(value="/m_board", method=RequestMethod.GET)
 	public String articleListMem(@Param("boardCode")String boardCode, Model model) {   
 		model.addAttribute("boardCode", boardCode);
 		model.addAttribute("articles", articleService.searchArticle(boardCode));		
+		return "/m_board";
+	}*/
+	
+	/*boardCode를 이용해 게시판별 게시글목록을 가져옴*/
+	@RequestMapping(value="/m_board", method=RequestMethod.GET)
+	public String articleListMem(String boardName2, Model model) {   
+		BoardDTO boardDTO;
+		try {
+			System.out.println(boardName2);
+			boardDTO = boardService.searchBoardName(boardName2);
+			String boardCode = boardDTO.getBoardCode();
+			model.addAttribute("boardCode",boardCode );
+			model.addAttribute("articles", articleService.searchArticle(boardCode));	
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return "/m_board";
 	}
 	
@@ -46,7 +70,7 @@ public class ArticleController{
 	public String addArticleMemPOST(String boardCode, String articleTitle, String content, Model model, HttpSession session) {
 		/*String articleCode int articleHits String articleTitle String articleContent boolean notice String
 		articleDate String boardCode */
-		String memberId = "aaa";
+		String memberId = "user3";
 		/*String memberId = (String)session.getAttribute("login");*/
 		articleService.addArticle(new ArticleDTO("0", 0, articleTitle, content, false, "0", boardCode, memberId));
 		
@@ -68,7 +92,14 @@ public class ArticleController{
 	@RequestMapping(value="/m_detailarticle", method=RequestMethod.GET)
 	public String readArticleMem(@RequestParam("articleCode")String articleCode, Model model) {
 		
-		model.addAttribute("articleVO", articleService.searchArticle(articleCode, 1));
+		
+		try {
+			model.addAttribute("articleVO", articleService.searchArticle(articleCode, 1));
+//			model.addAttribute("CommentDTO", commentService.searchCommentAll());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		return "/m_detailarticle";	
 	}
