@@ -58,14 +58,23 @@
 			        <th>운영자</th>
 			        <th>테마명</th>
 			      </tr>
-			    </thead>		
-			     <c:forEach var="board" items="${boardViewList }">
-			    	<tr>
+			    </thead>
+			   <%--  <%@ page import="java.util.*" %>
+			    <%@ page import="com.lecto.forward.vo.BoardSearchVO" %>
+			    <%
+			    	List<Object> boardViewList = Arrays.asList(request.getAttribute("boardViewList"));
+			    	for(int i=0;i<boardViewList.size();i++){
+			    		
+			    	}
+			    %> --%>
+			    		
+			     <c:forEach var="board" items="${boardViewList }" varStatus ="status" >
+			    	<tr id="tr">
 			    		<td><input type="checkbox" class="checkthis" name="boardCode00" id="boardCode00" value="${board.boardCode }"></td>
 			    		<td id="view" ><input type="hidden" id="boardName2" name="boardName2" value="${board.boardName }">${board.boardName }</td>
 			    		<td id="view">${board.memberId }</td>
 			    		<td id="view">${board.themeName }</td>
-			    		<td id="view"><input type="hidden" name="boardCode" id="boardCode" value="${board.boardCode }" ></td>
+			    		<td id="view"><input type="hidden" name="boardCode"  id="boardCode" value="${board.boardCode }" ></td>
 			    	</tr>
 			    </c:forEach> 
 				
@@ -79,9 +88,8 @@
 			  
 			  
 			   <button  id="btn_update" class="btn btn-warning pull-right" >수정</button>
-			
-			  			 
-			  
+		
+			   
 			
 			  <button id="btn_add" class="btn btn-success pull-right" >게시판 추가</button>
 			  <!-- <input type="hidden" name="job" value="addBoard"> -->
@@ -98,56 +106,66 @@
 			$(".checkthis").prop('checked', $(this).prop('checked'));
 		}); */
 		
-/* 		$('#tb #view').click(function(){
-			var href = "./a_articlelist.jsp";
-			window.location.href = href;
-		}); */
+		$('#tb #view').click(function(){
+			var tr = $(this);
+			var td  = tr.children();
+			 var tmp = td.eq(1).val();
+			alert(tmp+"gg"); 
+			var $form =$('#deleteform');
+			var k =$('input[name=boardCode]').val();
+			alert(k);
+			$form.attr('action','/m_board');
+			$form.attr('method','get');
+			$form.appendTo('body');
+			var input='<input type="hidden" value="'+tmp+'" name="searchBoardName">';
+			alert(input);
+			$form.append(input);
+			$form.submit();
+		}); 
 		
+		/**게시글 수정*/
 		$('#btn_update').click(function(){
 			var check=$('input:checkbox[name=boardCode00]:checked').length;
 			alert(check);
+			 var job=$('.checkthis:checked').val(); 
+			var $form = $('#deleteform');
+			$form.attr('method','get');
+			$form.attr('action', '/a_editboard');
+			$form.appendTo('body');
 			if(check==1){
-				var job=$('.checkthis:checked').val();
 				 alert(job);
-				var $form = $('#deleteform');
-				$form.attr('method','get');
-				$form.attr('action', '/a_editboard');
-				$form.appendTo('body');
 				 var input='<input type="hidden" value="'+job+'" name="clickboardCode">'; 
-				
 				$form.append(input);	
-				$form.submit();
 			}else if(check==0){
-				alert("수정할 게시판을 선택해 주세요.")
+				alert("수정할 게시판을 선택해 주세요.");
+				var input='<input type="hidden" value="f" name="clickboardCode">'; 
+				$form.append(input);	
 			}
-			
 			else{
 				alert("게시판 수정은 한개만 선택 해주세요.");
+				var input='<input type="hidden" value="f" name="clickboardCode">'; 
+				$form.append(input);	
 			}
+			$form.submit();
+			
 		});
-		
+		/**게시글 추가*/
  		$('#btn_add').click(function(){
 				var $form = $('#deleteform');
-				$form.attr('method','get');
-				$form.attr('action', '/ad_addboard');
+				$form.attr('method','post');
+				$form.attr('action', '/ad_addboardView');
 				$form.appendTo('body');
 				$form.submit();
 			}); 
 		
- 		
+ 		/**검색어 입력해서 검색*/
 		$('#btn-info').click(function(){		
 			var tmp = $('select[name="searchWay"]').val();
 			var tm2 = $('#keyword').val();
 			alert(tmp);
 			alert(tm2);
 			var $form = $('#deleteform');
-			alert('gg');
-			if(tm2==null){
-				
-				$form.attr('method','get');
-			}else{
-				$form.attr('method','post');
-			}
+			$form.attr('method','post');
 			$form.attr('action', '/searchBoardWay');
 			$form.submit(); 
 			
@@ -158,16 +176,17 @@
 			});  */
 		}); 
 		 
-		
-		$("btn_delete").click( function() {
-			$("input[name=boardCode00]:checked").each(function() {
+		/**삭제할 게시판 선택후 삭제*/
+		$("#btn_delete").click( function() {
+			 $("input[name=boardCode00]:checked").each(function() {
 				var test = $(this).val();
 				alert(test);
 			});
 			var $form = $('#deleteform');
 			$form.attr('action', '/deleteBoardList');
-			$form.attr('method', 'get');
-		    $form.submit();
+			$form.attr('method', 'post');
+			$form.appendTo('body');
+		    $form.submit();   
 		});
 		
 		/* $('.pull-right').click(function(){

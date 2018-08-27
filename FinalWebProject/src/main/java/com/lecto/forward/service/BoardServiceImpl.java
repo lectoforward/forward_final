@@ -41,8 +41,7 @@ public class BoardServiceImpl implements BoardService {
 			return false;
 		}else {
 			try {
-				boardDTO.setBoardCode(generateBoardCode());
-				boardMapper.addBoardDTO(boardDTO);
+				boardMapper.addBoardDTO(boardDTO);			
 			} catch (Exception ex) {
 				System.out.println("addBoard 오류");
 
@@ -80,11 +79,11 @@ public class BoardServiceImpl implements BoardService {
 		}
 	}
 	
-	public boolean updateBoard(BoardDTO boardDTO, List<GradeDTO> grades) throws Exception{
+	/*public boolean updateBoard(BoardDTO boardDTO, List<GradeDTO> grades) throws Exception{
 		if(boardDTO==null || grades.size()==0) {
 			return false;
 		}else {
-			try {
+			try {		
 				boardMapper.updateBoard(boardDTO);
 				for (int i = 0; i < grades.size(); i++) {
 					gradeMapper.updateGrade(grades.get(i));
@@ -94,11 +93,15 @@ public class BoardServiceImpl implements BoardService {
 				int memberArticleNum;
 				int changeGradeNum=0;
 				int successCnt=0;
+				System.out.println(boardDTO.getBoardName()+"보드네임");
+				System.out.println(memberIds.size()+"전체회원수");
 				for(int i=0;i<memberIds.size();i++){
+					System.out.println("회원 아이디 : "+memberIds.get(i).getMemberId());
 //					memberLevel=memberGradesDAO.searchBoardGrades(boardDTO.getBoardCode(), (String)memberIds[i]);
 //					memberGradesDTO =(MemberGradesDTO)memberLevel[i];
-					memberArticleNum=Integer.parseInt(memberArticleViewMapper.searchArticleCnt(boardDTO.getBoardName(), memberIds.get(i).getMemberId()));
-					for(int j=0;j<grades.size();i++){
+					memberArticleNum=memberArticleViewMapper.searchArticleCnt(boardDTO.getBoardName(), memberIds.get(i).getMemberId());
+					System.out.println(memberIds.get(i).getMemberId()+"  "+memberArticleNum+"회원글 수");
+					for(int j=0;j<grades.size();j++){
 						if(memberArticleNum<grades.get(j).getArticleCount())
 						{
 							if(j==0){
@@ -114,6 +117,62 @@ public class BoardServiceImpl implements BoardService {
 					memberGradesDTO = new MemberGradesDTO(generateBoardMemberGrade(),boardDTO.getBoardCode(), memberIds.get(i).getMemberId(), changeGradeNum);
 					memberGradesMapper.updateMemberGradesDTO(memberGradesDTO);
 					successCnt++;
+				}
+				if(successCnt!=0){
+					return true;
+				}
+				else{
+					return false;
+				}
+			} catch (Exception e) {
+				System.out.println("updateBoard 오류");
+				return false;
+			}
+		}
+	}*/
+	
+	public boolean updateBoard(BoardDTO boardDTO, List<GradeDTO> grades) throws Exception{
+		if(boardDTO==null || grades.size()==0) {
+			return false;
+		}else {
+			try {		
+				boardMapper.updateBoard(boardDTO);
+				for (int i = 0; i < grades.size(); i++) {
+					gradeMapper.updateGrade(grades.get(i));
+				}
+//				List<MemberDTO> memberIds=memberMapper.searchIds();
+				List<MemberGradesDTO> member=memberGradesMapper.searchToMemberId();
+				MemberGradesDTO memberGradesDTO;
+				int memberArticleNum;
+				int changeGradeNum=0;
+				int successCnt=0;
+				System.out.println(boardDTO.getBoardName()+"보드네임");
+				System.out.println(member.size()+"전체회원수");
+				for(int i=0;i<member.size();i++){
+//					System.out.println("회원 아이디 : "+memberIds.get(i).getMemberId());
+//					memberLevel=memberGradesDAO.searchBoardGrades(boardDTO.getBoardCode(), (String)memberIds[i]);
+//					memberGradesDTO =(MemberGradesDTO)memberLevel[i];
+					memberArticleNum=memberArticleViewMapper.searchArticleCnt(boardDTO.getBoardName(), member.get(i).getMemberId());
+					System.out.println(member.get(i).getMemberId()+"  "+memberArticleNum+"회원글 수");
+	
+					for(int j=0;j<grades.size();j++) {
+						if(grades.get(j).getArticleCount()<=memberArticleNum) {
+							changeGradeNum =grades.get(j).getGradeNum();
+						}else {
+							if(j==0) {
+								changeGradeNum=grades.get(j).getGradeNum();
+								break;
+							}else {
+								changeGradeNum=grades.get(j-1).getGradeNum();
+								break;
+							}
+						}
+					}
+					System.out.println(member.get(i).getMemberId()+"의 변경 등급 : "+changeGradeNum);
+//					memberGradesDTO = new MemberGradesDTO(generateBoardMemberGrade(),boardDTO.getBoardCode(), memberIds.get(i).getMemberId(), changeGradeNum);
+					memberGradesMapper.updateGradeNum(boardDTO.getBoardCode(), member.get(i).getMemberId(), changeGradeNum);
+					successCnt++;
+					
 				}
 				if(successCnt!=0){
 					return true;
@@ -345,4 +404,5 @@ public class BoardServiceImpl implements BoardService {
 		}
 		return code;
 	}
+	
 }

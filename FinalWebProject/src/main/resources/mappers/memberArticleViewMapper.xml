@@ -46,7 +46,7 @@
 	 	where member_id like CONCAT('%',#{memberId},'%')
 	 </select>
 	 
-	 <select id="searchArticleCnt" resultMap="memberArticleVO">
+	 <select id="searchArticleCnt" resultType="java.lang.Integer">
 	 	SELECT COUNT(*)
 	 	AS art_cnt
 	 	from

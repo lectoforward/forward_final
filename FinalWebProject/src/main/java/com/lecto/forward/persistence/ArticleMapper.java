@@ -15,6 +15,8 @@ public interface ArticleMapper {
 	public boolean updateHits(@Param("articleCode")String articleCode,@Param("articleHits")int articleHits)throws Exception;
 	public boolean updateNotice(@Param("articleCode")String articleCode, @Param("articleDate")String articleDate, @Param("notice")boolean notice)throws Exception;
 	public boolean updateDate(@Param("articleCode")String articleCode, @Param("articleDate")String articleDate)throws Exception;
+	/**조회수 업데이트 추가 : 180826*/
+	public boolean updateArticleHits(String articleCode) throws Exception;
 	public boolean deleteArticleCode(@Param("articleCode")String articleCode)throws Exception;
 	public boolean deleteArticleMemberId(@Param("memberId")String memberId)throws Exception;
 	public boolean deleteArticleParam(ArticleDTO articleDTO)throws Exception;	//deleteArticleParam

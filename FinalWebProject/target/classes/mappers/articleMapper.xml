@@ -18,7 +18,6 @@
 		article_hits, article_title, article_content, article_code,
 		notice,article_date, board_code, member_id
 	</sql>
-
 	<insert id="addArticle">
 		insert into article_tb(article_hits, article_title, article_content, article_code,
 		notice, board_code, article_date, member_id)
@@ -71,8 +70,11 @@
 	<update id="updateHits">
 		update article_tb set article_hits=#{articleHits}
 		where article_code=#{articleCode}
-		
-
+	</update>
+	
+	<update id="updateArticleHits">
+		update article_tb set article_hits=article_hits+1
+		where article_code=#{articleCode}
 	</update>
 
 
@@ -189,7 +191,6 @@
 	
 	
 	<select id="searchArt`icleParams" parameterType="java.util.List" resultMap="article">
-		<!-- 넘어와서 넘어온 aritlces에 있는 articleId를 뽑아내서 검색한 결과값을  -->
 	 	select <include refid="columns"/>
 	 	from article_tb
 	 	where article_code IN

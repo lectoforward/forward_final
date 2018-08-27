@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ko-KR"
 	itemscope
@@ -136,13 +137,27 @@ img.emoji {
 									<input type="submit" class="submitbx" value="댓글쓰기">
 								</form>
 							</div>
-							<!-- 댓글리스트 -->
-							<div class="comment_listbx">
-								<ul>
-								</ul>
-							</div>
-							<!-- .댓글리스트 -->
-						</div>
+												<!-- 댓글리스트 -->
+												<div class="comment_listbx">
+													<ul>
+													
+														<c:forEach var="comment" items="#{CommentDTO }">
+															<li>
+																<div id="itembx">
+																	<h5>${comment.commentContent } </h5>
+																	<div class="metabx">
+																		<span class="writebx">${comment.memberId }</span>
+																		<span class="datebx">${comment.commentDate }</span>
+																	</div>
+																</div>
+														</c:forEach>
+												
+													</ul>
+													
+												</div>
+												<!--댓글 리스트 끝 -->
+
+											</div>
 					</div>
 										<!-- 싱글페이징 -->
 										<div class="single_paging">

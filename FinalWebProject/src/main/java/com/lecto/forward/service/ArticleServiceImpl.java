@@ -110,6 +110,7 @@ public class ArticleServiceImpl implements ArticleService{
 	public ArticleVO searchArticle(String articleCode, int flag) {
 		ArticleVO vo = null;
 		try {
+			articleMapper.updateArticleHits(articleCode);
 			vo = articleViewMapper.searchArticleCode(articleCode);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
